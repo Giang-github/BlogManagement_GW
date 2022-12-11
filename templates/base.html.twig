@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome Admin !!!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+			<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+			<script src="{{ asset ('js/main.js')}}"></script>
+            <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+		{% endblock %}
+
+		{% block javascripts %}
+		{% endblock %}
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<div class="container">
+				<div class="dashboard">
+					{% block left %}
+						 <div class="left">
+                    <span class="left__icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div class="left__content">
+                        <!-- <div class="left__logo">LOGO</div> -->
+                        <div class="left__profile">
+                            <div class="left__image"><img src="{{asset('IMG/admin.png')}}" alt=""></div>
+                            <p class="left__name">Dang Thu Huyen</p>
+                        </div>
+                        <ul class="left__menu">
+                            <li class="left__menuItem">
+                                <a href="{{path('app_admin')}}" class="left__title"><img src="{{asset('assets/icon-dashboard.svg')}}"
+                                        alt="">Home Page</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="{{asset('assets/icon-tag.svg')}}" alt="">Blog<img
+                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="{{path('insert_post')}}">Insert Blog</a>
+									<a class="left__link" href="{{path('view_post')}}">View Blog</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="{{asset('assets/icon-book.svg')}}" alt="">Podcast<img
+                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="{{path('insert_podcast')}}">Insert podcast</a>
+									<a class="left__link" href="{{path('view_podcast')}}">View podcast</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="{{asset('assets/icon-edit.svg')}}" alt="">Category<img
+                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="{{path('insert_category')}}">Insert category</a>
+									<a class="left__link" href="{{path('view_category')}}">View category</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="{{asset('assets/icon-book.svg')}}" alt="">Course<img
+                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="{{path('insert_course')}}">Insert course</a>
+									<a class="left__link" href="{{path('view_course')}}">View course</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a href="view_customers.html" class="left__title"><img src="{{asset('assets/icon-users.svg')}}"
+                                        alt="">User</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="{{asset('assets/icon-user.svg')}}" alt="">Admin<img
+                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_admin.html">Insert admin</a>
+									<a class="left__link" href="view_admins.html">View admins</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a href="{{path('app_logout')}}" class="left__title"><img src="{{asset('assets/icon-logout.svg')}}" alt="">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+						<div class="right">
+							<div class="right__content">
+								<div class="right__desc">
+								{% endblock %}
+								{% block flash %}
+									{% for message in app.session.flashBag.get('Success')%}
+										<span class="alert alert-success">{{ message }}</span>
+                                        <br><br>
+									{% endfor %}
+									{% for message in app.session.flashBag.get('Error')%}
+										<span class="alert alert-danger">{{ message }}</span>
+                                        <br><br>
+									{% endfor %}
+							{% endblock %}
+							{% block body %}{% endblock %}
+                            </div>
+							</div>
+                        </div>    
+					</div>
+					</div>
+				</div>
+			</body>
+		</html>
+	</body>
+</html>
