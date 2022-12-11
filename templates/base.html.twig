@@ -34,8 +34,11 @@
                     <div class="left__content">
                         <!-- <div class="left__logo">LOGO</div> -->
                         <div class="left__profile">
-                            <div class="left__image"><img src="{{asset('IMG/admin.png')}}" alt=""></div>
-                            <p class="left__name">Dang Thu Huyen</p>
+                        {% if app.user != null %}
+                            <div class="left__image"><img src="{{asset('/IMG/Users/'~app.user.image)}}" alt=""></div>
+                            <p class="left__name">
+											{{ app.user.fullname }}
+										{% endif %}</p>
                         </div>
                         <ul class="left__menu">
                             <li class="left__menuItem">

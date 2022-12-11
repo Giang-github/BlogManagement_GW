@@ -1168,7 +1168,7 @@ body {
 }
 
 .right__inputWrapper select {
-  height: 80px;
+  height: 45px;
   border: solid 1px #DAE1F5;
   border-radius: 5px;
   padding: 0 20px;

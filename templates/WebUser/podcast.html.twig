@@ -1,0 +1,288 @@
+{% extends 'baseweb.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <div class="containerpc">
+    
+      <!-- Banner -->
+      <div class="bannerpc">
+        <div class="banner__podcast">
+          <div class="podcast_img">
+            <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+          </div>
+          <div class="podcast_info">
+            <span>Đặng Thu Huyền's Podcast</span>
+            <p>Đặng Thu Huyền</p>
+            <div class="iconSpotify">
+              <i class="fab fa-spotify" title="Spotify"></i>
+            </div>
+          </div>
+        </div>
+        <div class="banner__des">
+          <p>
+            This is where I share personal experiences and learnings on entrepreneurship, personal development, and life
+            in
+            general through my journey traveling, living, working, and learning around the world, just to be a better
+            person.
+            Đây là nơi Phi chia sẻ trải nghiệm và bài học<span id="point">...</span> <span id="more"> cá nhân mà Phi Vân
+              học được về kinh doanh, phát triển bản thân
+              và
+              trởthành chính mình, trên hành trình sống, làm việc, học tập tại
+              hơn
+              120 quốc gia và sẽ không dừng lại.</span>
+          </p>
+          <button onclick="myFunction()" id="myBtn">Read more</button>
+        </div>
+      </div>
+
+      <!-- Searchpod -->
+      <div class="searchPod">
+        <div class="tab_search">
+          <i class="fas fa-search search"></i>
+          <input class="inputSearch" type="text" placeholder="Search podcast...">
+        </div>
+      </div>
+
+      <!-- List podcast -->
+      <div class="podcast__list">
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+
+        <div class="pod">
+          <a class="podcast_item" href="{{('podcast_detail')}}">
+            <div class="item_ava">
+              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+            </div>
+            <i class="fas fa-play-circle"></i>
+            <div class="item_pod">
+              <div class="pod_title">
+                Lắng nghe điều không nói
+              </div>
+              <div class="date_realtime">
+                <span>4/10/2021</span> | <span>2 giờ trước</span>
+              </div>
+              <div class="podcast_des">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti quam asperiores quidem amet et cumque
+                nesciunt dolorem doloribus cupiditate commodi autem voluptate, itaque aliquam impedit ea quasi maiores
+                in
+                minus.
+              </div>
+            </div>
+          </a>
+          <div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
+        </div>
+      </div>
+
+      <!-- Load more -->
+      <div class="load__more">
+        <a href="" id="loadMore">
+          <button>Load More</button>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+<script src="../JS/podcast.js"></script>
+
+{% endblock %}
+{% block footer1 %}
+  {% endblock %}

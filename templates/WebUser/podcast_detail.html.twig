@@ -1,0 +1,454 @@
+{% extends 'baseweb.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<div
+			class="containerpcdt">
+			<!-- All episode -->
+			<div class="episode">
+				<a href="javascript:history.go(-1)">
+					<i class="fas fa-chevron-left"></i>
+					All episode
+				</a>
+			</div>
+
+			<!-- Banner -->
+			<div class="bannerpcdt">
+				<div class="banner__podcast">
+					<div class="podcast_img">
+						<img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+					</div>
+					<div class="podcast_info">
+						<p>Đặng Thu Huyền's Podcast</p>
+						<span>Khoá học Quản trị bản thân - Phần 9</span>
+						<div class="iconSpotify">
+							<i class="fab fa-spotify" title="Spotify"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Phần hiển thị xử lý audio  -->
+			<div class="podcast_audio">
+				<div class="player">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+						<div class="left">0.00</div>
+						<input id="progresspcdt" class="progresspcdt" type="range" value="0" step="1" min="0" max="100">
+						<div class="right">0.00</div>
+					</div>
+					<div class="control">
+						<div class="btn btn-repeat">
+							<i class="las la-sync-alt" title="Repeat"></i>
+						</div>
+						<div class="btn btn-prev">
+							<i class="las la-undo-alt" title="Prev 10s"></i>
+							<span>10</span>
+						</div>
+						<div class="btn btn-toggle-play">
+							<i class="fas fa-pause icon-pause"></i>
+							<i class="fas fa-play icon-play"></i>
+						</div>
+						<div class="btn btn-next">
+							<i class="las la-redo-alt" title="Skip 10s"></i>
+							<span>10</span>
+						</div>
+						<div class="btn btn-download">
+							<i class="las la-download"></i>
+						</div>
+					</div>
+					<audio id="audio" src=""></audio>
+				</div>
+			</div>
+
+			<!-- Nội dung mô tả podcast -->
+			<div class="pod_content" id="podContent">
+				<div class="pod_curentime">
+					<span>Đặng Thu Huyền</span>&nbsp; | &nbsp;<span class="realdate">6/10/2021</span>
+				</div>
+				<div class="pod_des">
+					<p>
+						Warren Buffet đã từng nói, nếu bạn muốn thành công trong cuộc sống thì một trong những điều quan trọng nhất
+						            bạn cần làm là: Invest in relationships with honest and ethical people - Đầu tư vào quan hệ với những người
+						            chân thật và có sống có giá trị đạo đức.
+						<br><br>Đó chính là nền tảng quan trọng hay hệ thống hỗ trợ tốt
+						            nhất
+						            cho sự
+						            thành công của một con người. Trong podcast này, Phi Vân sẽ chia sẻ 3 lý do tại sao và 3 lợi ích vững bền mà
+						            bạn sẽ có được khi đưa ra quyết định đầu tư có thể nói là mang tầm ảnh hưởng lớn nhất này đến cuộc đời của
+						            bạn.
+					</p>
+				</div>
+			</div>
+
+			<!-- Sự kiện trong podcast -->
+			<div class="btn_event">
+				<div class="event_pre">
+					<a href="">
+						<i class="las la-long-arrow-alt-left"></i>
+						Previous Episode
+					</a>
+				</div>
+				<div class="event_next">
+					<a href="">
+						Next episode
+						<i class="las la-long-arrow-alt-right"></i>
+					</a>
+				</div>
+			</div>
+
+			<div
+				style="border: 1px solid #fff; width: auto; height: auto; margin: 0 200px;">
+
+				<!-- Viết bình luận -->
+				<div class="podcast__comment">
+					<div class="info">
+						<div class="info__avapcdt">
+							<img src="../../IMG/logo_vn.png" alt="" style="width: 35px; height: 35px; border-radius: 50%;">
+						</div>
+					</div>
+					<form class="podcast_text">
+						<div class="podcast_btn">
+							<button type="button" id="comment">Viết bình luận...</button>
+							<div class="pod_commnent">
+								<textarea type="text" placeholder="Viết bình luận..."></textarea>
+							</div>
+						</div>
+						<div class="pod_event">
+							<div class="eventpc">
+								<div class="btn_camera">
+									<input type="file" id="camerapc" class="file">
+								</div>
+								<div class="btn_gif">
+									<input type="file" id="gifpc" class="file">
+								</div>
+								<div class="btn_emoji">
+									<input type="file" id="gifpc" class="file">
+								</div>
+							</div>
+							<div class="btn_cmpcdt">
+								<button class="close_comment" type="button">Hủy</button>
+								<button class="post_comment" type="submit">Đăng</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<!-- Comment 1 -->
+				<div class="count__commentpcdt">
+					<div class="info_cmpcdt" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div class="info__avapcdt">
+								<img src="../../IMG/logo_vn.png" alt="">
+							</div>
+							<div class="info__text">
+								<p>Dang Thu Huyen</p>
+								<p class="realtime_cm">4 giờ trước</p>
+							</div>
+							<div style="position: relative; top: 18px; left: -30px; font-size: 7px; cursor: pointer;">
+								<i class="fas fa-crown" title="Quản trị viên"></i>
+								Render
+							</div>
+						</div>
+						<div class="dotdel">
+							<i class="fas fa-ellipsis-v"></i>
+						</div>
+					</div>
+					<div class="delcomment">
+						<span class="delpc">
+							Xóa
+						</span>
+					</div>
+					<div class="content_cmpc">
+						<p>Hello World</p>
+					</div>
+					<div class="view_likepc">
+						<div class="like_reppc">
+							<div>
+								<i class="far fa-heart" id="heart"></i>
+								<span>Thích</span>
+							</div>
+							<div>
+								<i class="far fa-comment-alt"></i>
+								<span class="rep">Phản hồi</span>
+							</div>
+						</div>
+						<div class="people_likedpc">
+							<div>
+								<img src="../../IMG/logo_vn.png" alt="" style="width: 13px; height: 13px; border-radius: 50%;">
+							</div>
+							<span>1</span>&nbsp;lượt thích
+						</div>
+					</div>
+
+					<!-- Viết phản hồi đầu tiên cho bình luận -->
+					<div class="feedback_cmpc">
+						<div class="info_cmpcdt">
+							<div class="info__avapcdt" style="margin: 5px 5px 0 10px;">
+								<img src="../../IMG/logo_vn.png" alt="" style="width: 25px; height: 25px;">
+							</div>
+						</div>
+						<form class="feedback__textpc">
+							<div class="feedback_btnpc">
+								<div class="input_feedbackpc">
+									<textarea type="text" placeholder="Viết phản hồi..." class="feedbackText"></textarea>
+								</div>
+							</div>
+							<div class="feedback_eventpc">
+								<div class="event">
+									<div class="btn_camera">
+										<input type="file" id="camerapc">
+									</div>
+									<div class="btn_gif">
+										<input type="file" id="gifpc">
+									</div>
+									<div class="btn_emoji">
+										<input type="file" id="gifpc">
+									</div>
+								</div>
+								<div class="btn_cmpcdt">
+									<button class="close_feedback" type="button">Hủy</button>
+									<button class="post_feedback" type="submit">Đăng</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<!-- Các phản hồi bắt đầu được add thêm tại đây -->
+
+					<!-- Feedback 1 -->
+					<div class="count__feedback">
+						<div class="info_cmpcdt" style="margin-top: 20px;">
+							<div>
+								<div class="info__avapcdt">
+									<img src="../../IMG/logo_vn.png" alt="">
+								</div>
+								<div class="info__text">
+									<p>Dang Thu Huyen</p>
+									<p class="realtime_cm">4 giờ trước</p>
+								</div>
+								<div style="position: relative; top: 18px; left: -30px; font-size: 7px; cursor: pointer;">
+									<i class="fas fa-crown" title="Quản trị viên"></i>
+									Render
+								</div>
+							</div>
+						</div>
+						<div class="content_cm">
+							<p>Phản hồi lại</p>
+						</div>
+						<div class="view_like">
+							<div class="like_rep">
+								<div>
+									<i class="far fa-heart"></i>
+									<span>Thích</span>
+								</div>
+								<div>
+									<i class="far fa-comment-alt"></i>
+									<span class="rep">Phản hồi</span>
+								</div>
+							</div>
+							<div class="people_liked">
+								<div>
+									<img src="../../IMG/logo_vn.png" alt="" style="width: 13px; height: 13px; border-radius: 50%;">
+								</div>
+								<span>1</span>&nbsp;lượt thích
+							</div>
+						</div>
+
+						<div class="feedback_cmpc">
+							<div class="info_cmpcdt">
+								<div class="info__avapcdt" style="margin: 5px 5px 0 10px;">
+									<img src="../../IMG/logo_vn.png" alt="" style="width: 25px; height: 25px;">
+								</div>
+							</div>
+							<form class="feedback__textpc">
+								<div class="feedback_btnpc">
+									<div class="input_feedbackpc">
+										<textarea type="text" placeholder="Viết phản hồi..." class="feedbackText"></textarea>
+									</div>
+								</div>
+								<div class="feedback_eventpc">
+									<div class="event">
+										<div class="btn_camera">
+											<input type="file" id="camerapc">
+										</div>
+										<div class="btn_gif">
+											<input type="file" id="gifpc">
+										</div>
+										<div class="btn_emoji">
+											<input type="file" id="gifpc">
+										</div>
+									</div>
+									<div class="btn_cmpcdt">
+										<button class="close_feedback" type="button">Hủy</button>
+										<button class="post_feedback" type="submit">Đăng</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+					<!-- Feedback v..v.. -->
+					<!-- ------------------------------------- -->
+				</div>
+
+				<!-- Comment 2 -->
+				<div class="count__commentpcdt">
+					<div class="info_cmpcdt" style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+						<div>
+							<div class="info__avapcdt">
+								<img src="../../IMG/logo_vn.png" alt="">
+							</div>
+							<div class="info__text">
+								<p>Dang Thu Huyen</p>
+								<p class="realtime_cm">4 giờ trước</p>
+							</div>
+							<div style="position: relative; top: 18px; left: -30px; font-size: 7px; cursor: pointer;">
+								<i class="fas fa-crown" title="Quản trị viên"></i>
+								Render
+							</div>
+						</div>
+						<div class="dotdel">
+							<i class="fas fa-ellipsis-v"></i>
+						</div>
+					</div>
+					<div class="delcomment">
+						<span class="delpc">
+							Xóa
+						</span>
+					</div>
+					<div class="content_cm">
+						<p>Hello World</p>
+					</div>
+					<div class="view_like">
+						<div class="like_rep">
+							<div>
+								<i class="far fa-heart" id="heart"></i>
+								<span>Thích</span>
+							</div>
+							<div>
+								<i class="far fa-comment-alt"></i>
+								<span class="rep">Phản hồi</span>
+							</div>
+						</div>
+						<div class="people_liked">
+							<div>
+								<img src="../../IMG/logo_vn.png" alt="" style="width: 13px; height: 13px; border-radius: 50%;">
+							</div>
+							<span>1</span>&nbsp;lượt thích
+						</div>
+					</div>
+
+					<!-- Viết phản hồi đầu tiên cho bình luận -->
+					<div class="feedback_cmpc">
+						<div class="info_cmpcdt">
+							<div class="info__avapcdt" style="margin: 5px 5px 0 10px;">
+								<img src="../../IMG/logo_vn.png" alt="" style="width: 25px; height: 25px;">
+							</div>
+						</div>
+						<form class="feedback__textpc">
+							<div class="feedback_btnpc">
+								<div class="input_feedbackpc">
+									<textarea type="text" placeholder="Viết phản hồi..." class="feedbackText"></textarea>
+								</div>
+							</div>
+							<div class="feedback_eventpc">
+								<div class="event">
+									<div class="btn_camera">
+										<input type="file" id="camerapc">
+									</div>
+									<div class="btn_gif">
+										<input type="file" id="gifpc">
+									</div>
+									<div class="btn_emoji">
+										<input type="file" id="gifpc">
+									</div>
+								</div>
+								<div class="btn_cmpcdt">
+									<button class="close_feedback" type="button">Hủy</button>
+									<button class="post_feedback" type="submit">Đăng</button>
+								</div>
+							</div>
+						</form>
+					</div>
+
+					<!-- Các phản hồi bắt đầu được add thêm -->
+					<div class="count__feedback">
+						<div class="info_cmpcdt" style="margin-top: 20px;">
+							<div>
+								<div class="info__avapcdt">
+									<img src="../../IMG/logo_vn.png" alt="">
+								</div>
+								<div class="info__text">
+									<p>Dang Thu Huyen</p>
+									<p class="realtime_cm">4 giờ trước</p>
+								</div>
+								<div style="position: relative; top: 18px; left: -30px; font-size: 7px; cursor: pointer;">
+									<i class="fas fa-crown" title="Quản trị viên"></i>
+									Render
+								</div>
+							</div>
+						</div>
+						<div class="content_cm">
+							<p>Phản hồi lại</p>
+						</div>
+						<div class="view_like">
+							<div class="like_rep">
+								<div>
+									<i class="far fa-heart"></i>
+									<span>Thích</span>
+								</div>
+								<div>
+									<i class="far fa-comment-alt"></i>
+									<span class="rep">Phản hồi</span>
+								</div>
+							</div>
+							<div class="people_liked">
+								<div>
+									<img src="../../IMG/logo_vn.png" alt="" style="width: 13px; height: 13px; border-radius: 50%;">
+								</div>
+								<span>1</span>&nbsp;lượt thích
+							</div>
+						</div>
+
+						<div class="feedback_cmpc">
+							<div class="info_cmpcdt">
+								<div class="info__avapcdt" style="margin: 5px 5px 0 10px;">
+									<img src="../../IMG/logo_vn.png" alt="" style="width: 25px; height: 25px;">
+								</div>
+							</div>
+							<form class="feedback__textpc">
+								<div class="feedback_btnpc">
+									<div class="input_feedbackpc">
+										<textarea type="text" placeholder="Viết phản hồi..." class="feedbackText"></textarea>
+									</div>
+								</div>
+								<div class="feedback_eventpc">
+									<div class="event">
+										<div class="btn_camera">
+											<input type="file" id="camerapc">
+										</div>
+										<div class="btn_gif">
+											<input type="file" id="gifpc">
+										</div>
+										<div class="btn_emoji">
+											<input type="file" id="gifpc">
+										</div>
+									</div>
+									<div class="btn_cmpcdt">
+										<button class="close_feedback" type="button">Hủy</button>
+										<button class="post_feedback" type="submit">Đăng</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../JS/podcast_detail.js"></script>
+ 
+
+{% endblock %}
+ {% block footer1 %}
+  {% endblock %}

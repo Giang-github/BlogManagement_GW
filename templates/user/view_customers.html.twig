@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View customers</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="dashboard">
+                <div class="left">
+                    <span class="left__icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <div class="left__content">
+                        <!-- <div class="left__logo">LOGO</div> -->
+                        <div class="left__profile">
+                            <div class="left__image"><img id="image-admin" src="" alt=""></div>
+                            <p id="username-admin" class="left__name"></p>
+                        </div>
+                        <ul class="left__menu">
+                            <li class="left__menuItem">
+                                <a href="index.html" class="left__title"><img src="assets/icon-dashboard.svg"
+                                        alt="">Home Page</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-tag.svg" alt="">Blog & podcast<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_post.html">Insert post</a>
+                                    <a class="left__link" href="insert_podcast.html">Insert podcast</a>
+                                    <a class="left__link" href="view_post.html">View post</a>
+                                    <a class="left__link" href="view_podcast.html">View podcast</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-edit.svg" alt="">Category Blog<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_category.html">Insert category</a>
+                                    <a class="left__link" href="view_category.html">View category</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-edit.svg" alt="">Category PodCast<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_category.html">Insert category</a>
+                                    <a class="left__link" href="view_categorypostcast.html">View category</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-book.svg" alt="">Course<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_course.html">Insert course</a>
+                                    <a class="left__link" href="view_course.html">View course</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a href="view_customers.html" class="left__title"><img src="assets/icon-users.svg"
+                                        alt="">User</a>
+                            </li>
+                            <li class="left__menuItem">
+                                <div class="left__title"><img src="assets/icon-user.svg" alt="">Admin<img
+                                        class="left__iconDown" src="assets/arrow-down.svg" alt=""></div>
+                                <div class="left__text">
+                                    <a class="left__link" href="insert_admin.html">Insert admin</a>
+                                    <a class="left__link" href="view_admins.html">View admins</a>
+                                </div>
+                            </li>
+                            <li class="left__menuItem">
+                                <a   id="logoutadmin" class="left__title"><img src="assets/icon-logout.svg" alt="">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Dashboard</div>
+                        <div class="right__search">
+                            <p class="right__desc">View users</p>
+                            <div class="right__inputSearch">
+                                <input type="text" placeholder="Search here...">
+                                <i class="las la-search"></i>
+                            </div>
+                        </div>
+                        <div class="right__table">
+                            <div class="right__tableWrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th style="text-align: center;">Image</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Rank</th>
+                                            <th>View Blog</th>
+                                            <th>Phone</th>
+                                            <th>Xoá</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="listuser">
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="API/index.js"></script>    
+    <script src="API/user.js"></script>    
+</body>
+
+</html>

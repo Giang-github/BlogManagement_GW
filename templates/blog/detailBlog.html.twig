@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="right">
+		<div class="right__content">
+			<div class="right__title">Dashboard</div>
+			<p class="right__desc">View Detail</p>
+			<div class="right__formWrapper">
+				<form action="" method="post" enctype="multipart/form-data" id="formpost">
+					<div class="containdiv">
+						<div class="div">
+							<div class="right__inputWrapper">
+								<label>Title:
+								</label>
+								{{blog.title}}
+							</div>
+							<div class="right__inputWrapper">
+								<label>Image</label><img width="15%" height="15%" src="{{asset('IMG/Blogs/'~blog.image)}}" alt="">
+							</div>
+							<div class="right__inputWrapper">
+								<label>Content</label>
+								{{blog.content}}
+							</div>
+						</div>
+						<div class="div">
+							<div class="right__inputWrapper">
+								<label>Category</label>
+								{% for category in blog.category %}
+									{{category.title}}
+									<br>
+								{% endfor %}
+							</div>
+							<div class="right__inputWrapper" style="height: 30px">
+								<label>Course</label>
+								{% if blog.course != null %}
+									<a class="text-decoration-none" href="{{ path('view_course')}}">
+										{{ blog.course.title }}
+									</a>
+								{% else %}
+									<i>None course</i>
+								{% endif %}
+                                <br><br>
+                                <div class="right__inputWrapper">
+								<a style:"text-decoration-none" class="right__tableMore" href="{{ path ('view_post')}}">
+									<p>View all</p>
+									<img src="{{asset('assets/arrow-right-black.svg')}}" alt="">
+                                    </a>
+                                </div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

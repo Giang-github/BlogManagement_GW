@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="right">
+		<div class="right__content">
+			<div class="right__title">Dashboard</div>
+			<div class="right__search">
+				<p class="right__desc">View courses</p>
+				<div class="right__inputSearch">
+					<input type="text" placeholder="Search here...">
+					<i class="las la-search"></i>
+				</div>
+			</div>
+			<div class="right__table">
+				<div class="right__tableWrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Image</th>
+								<th>Title</th>
+								<th>Blog</th>
+								<th>Content</th>
+								<th colspan="2">Action</th>
+							</tr>
+						</thead>
+
+						<tbody class="tag" id="list-course">
+							{% for course in courses %}
+								<tr>
+									<th>{{course.id}}</th>
+									<th><img src="{{asset('IMG/Courses/'~course.image)}}" alt=""></th>
+									<th>{{course.title}}</th>
+									<th style="text-align:center">
+										{% for blog in course.blogs %}
+											{{ blog.title }}
+											<br>
+										{% endfor %}
+									</th>
+									<th>{{course.description}}</th>
+									<th>
+										<a href="http://"><img class=" ___icon" src="assets/icon-edit.svg" alt=""></a>
+									</th>
+									<th>
+										<a href="{{ path ('course_delete', {'id': course.id})}}"><img class="___icon" src="assets/icon-trash.svg" alt=""></a>
+									</th>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<a class="right__tableMore">
+					<p>View all</p>
+					<img src="assets/arrow-right-black.svg" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

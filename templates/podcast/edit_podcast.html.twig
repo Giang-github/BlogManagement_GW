@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block body %} 
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Dashboard</div>
+                        <p class="right__desc">Edit post</p>
+                        <div class="right__formWrapper">
+                            <!-- <form  id="updateform"> -->
+                                <div class="right__inputWrapper">
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" placeholder="Tiêu đề">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="image">Image</label>
+                                    <input type="file" id="fileblog" onchange="ImagesFileAsURL()">
+                                    <img style="width: 150px; height: 150px; margin: 10px 0 0 0" src="" id="imageblog"/>
+                                    <img  style="display: none;" src="" id="imageblog2"/>
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="image">Audio</label>
+                                    <input type="file" id="fileaudioblog" onchange="changeAudio()">
+                                  <audio id="my-audio" controls>
+                                    <source type="audio/mpeg" src="">
+                                  </audio>
+                                  <audio style="display: none;" id="my-audio2" controls>
+                                    <source type="audio/mpeg" src="">
+                                  </audio>
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="p_category">Category</label>
+                                    <select name="" id="podcasttcategoryinsert">
+                                    </select>
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="p_category">Course</label>
+                                    <select name="" id="courses_name">
+                                    </select>
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="desc">Content</label>
+                                    <textarea name="" id="descriptonpodcast" cols="30" rows="10"></textarea>
+                                </div>
+                                <input type="hidden" name="view"  id="view" value=""/>
+                                <input type="hidden" name="love"  id="love" value=""/>
+                                <button class="btn" onclick="save()" type="submit">UPDATE</button>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+                </div>
+        {% endblock %}

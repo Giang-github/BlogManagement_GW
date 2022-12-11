@@ -1,23 +1,102 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Register{% endblock %}
+{% extends "base.html.twig" %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+{% block left %}{% endblock %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+	{# {{ form_start(registrationForm) }}
+		        {{ form_row(registrationForm.email) }}
+		        {{ form_row(registrationForm.fullname) }}
+		        {{ form_row(registrationForm.dob) }}
+		        {{ form_row(registrationForm.image) }}
+		        {{ form_row(registrationForm.phone) }}
+		        {{ form_row(registrationForm.gender) }}
+		        {{ form_row(registrationForm.plainPassword, {
+		            label: 'Password'
+		        }) }}
+		        {{ form_row(registrationForm.agreeTerms) }}
+		
+		        <button type="submit" class="btn">Register</button>
+		    {{ form_end(registrationForm) }} #}
+	<div class="right">
+		<div class="right__content">
+			<p class="right__desc">Register Account
+			</p>
 
-    <h1>Register</h1>
+			<div class="right__formWrapper">
+				<form action="" method="post" enctype="multipart/form-data" id="formpost">
+					<div class="containdiv">
+						<div class="div">
+							{{ form_start(registrationForm) }}
+							<div class="right__inputWrapper">
+								<label for="email">Your email</label>
+								{{ form_widget(registrationForm.email,{
+                                        'attr':{
+                                        'placeholder': 'Email address',
+                                                }
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="plainPassword">Your Password</label>
+								{{ form_widget(registrationForm.plainPassword,{
+                                    'attr':{
+                                        'placeholder': 'Password',
+                                                }
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="fullname">Your Name</label>
+								{{ form_widget(registrationForm.fullname,{
+                                        'attr':{
+                                        'placeholder': 'Fullname',
+                                                }
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="image">Picture</label>
+								{{ form_widget(registrationForm.image,{
+                                 }) }}
+							</div>
+							<button type="submit" class="btn">Register</button>
+							<br>
+							<br>
+							<button>
+								<a class="btn" href="{{ path('app_login') }}">Login</a>
+							</button>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+						</div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+						<div class="div">
+							<div class="right__inputWrapper">
+								<label for="gender">Your Gender</label>
+								{{ form_widget(registrationForm.gender,{
+                                    'attr':{
+                                        'placeholder': 'Choose your gender'
+										  }
+                                 }) }}
+							</div>
+                            <br>
+							<div class="right__inputWrapper">
+								<label for="phone">Your Phone</label>
+								{{ form_widget(registrationForm.phone,{
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="dob">Your Birthday</label>
+								{{ form_widget(registrationForm.dob,{
+                                        'attr':{
+                                        'placeholder': 'Write something...'
+										  }
+                                 }) }}
+							</div>
+                            {{ form_row(registrationForm.agreeTerms) }}
+							{{ form_end(registrationForm) }}
 
-   <p>do you already have an email?<a href="{{ path('app_login') }}">click here login</a></p>
-{% endblock %}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

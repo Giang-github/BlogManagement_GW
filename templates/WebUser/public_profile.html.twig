@@ -1,0 +1,206 @@
+{% extends 'baseweb.html.twig' %}
+
+{% block body %}
+<body style="opacity: 0.95;">
+  <div class="container">
+    <!-- Header -->
+
+    <div class="out_publicProfile">
+      <div class="out_des">
+        <p>Đây là cách các thành viên khác của cộng đồng trực tuyến xem hồ sơ của bạn</p>
+      </div>
+      <div class="out_btn">
+        <a href="{{path ('profile')}}">
+          <button>Thoát chế độ xem trước</button>
+        </a>
+      </div>
+    </div>
+
+    <header>
+      <div class="logo">
+        <div class="logo__name">
+          <p>Dang Thu Huyen</p>
+        </div>
+      </div>
+      <div class="categories">
+        <div class="categories__menu">
+          <ul class="menu">
+            <li><a href="" onclick="toggleMenu();">Trang chủ</a></li>
+            <li class="item_02">
+              <a href="">Blog</a>
+              <span><i class="fas fa-chevron-down"></i></span>
+              <ul class="sub_menu">
+                <li><a href="">Kỹ năng tương lai</a></li>
+                <li><a href="">Phát triển bản thân</a></li>
+                <li><a href="">Kinh doanh và Tech</a></li>
+                <li><a href="">Travel</a></li>
+                <li><a href="">Cuộc sống hạnh phúc</a></li>
+                <li><a href="">Thơ & Tản văn</a></li>
+                <li><a href="">Phỏng vấn báo chí</a></li>
+              </ul>
+            </li>
+            <li class="item_02">
+              <a href="" onclick="toggleMenu();">Podcast</a>
+              <span><i class="fas fa-chevron-down"></i></span>
+              <ul class="sub_menu">
+                <li><a href="">Câu chuyện kinh doanh</a></li>
+                <li><a href="">Khởi nghiệp</a></li>
+                <li><a href="">Kinh doanh và Tech</a></li>
+                <li><a href="">Travel</a></li>
+                <li><a href="">Cuộc sống hạnh phúc</a></li>
+                <li><a href="">Thơ & Tản văn</a></li>
+                <li><a href="">Phỏng vấn báo chí</a></li>
+              </ul>
+            </li>
+            <li class="item_02">
+              <a href="" onclick="toggleMenu();">Thư viện</a>
+              <span><i class="fas fa-chevron-down"></i></span>
+              <ul class="sub_menu">
+                <li><a href="">Group cộng đồng</a></li>
+                <li><a href="">Đăng ký thành viên</a></li>
+                <li><a href="">Thư viện cộng đồng</a></li>
+                <li><a href="">Liên hệ</a></li>
+              </ul>
+            </li>
+            <li><a href="" onclick="toggleMenu();">Sách</a></li>
+            <li class="item_05"><a href="" onclick="toggleMenu();">Khóa học</a></li>
+          </ul>
+        </div>
+        <div class="contact__icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+        <div class="categories__notification">
+          <div>
+            <i class="fas fa-bell dropdown-toggle" data-toggle="notificationMenu"></i>
+            <span class="firstspan">40</span>
+          </div>
+          <img src="../../IMG/dangthuhuyen_blog.jpg" class="user-img" alt="Tài khoản" title="Tài khoản" id="profile">
+          <div class="logout">
+            <ul>
+              <li><a href="">Profile</a></li>
+              <li><a href="">My L&D Center</a></li>
+              <li><a href="">My Account</a></li>
+              <li class="line-logout"></li>
+              <li><a href="">Đăng xuất</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="categories__login">
+          <div class="login__icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <a href="login.html">
+            <button>Login</button>
+          </a>
+        </div>
+        <div class="toggle" onclick="toggleMenu()"></div>
+      </div>
+    </header>
+
+    <div class="profile">
+      <div class="profile_info">
+        <div class="information">
+          <div class="info__img">
+            <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
+          </div>
+          <div class="info__name">
+            <h3>DangThuHuyen</h3>
+            <div class="follow">
+              <p>0&nbsp;<span>Người theo dõi</span></p>&nbsp;&#8226;&nbsp;
+              <p>0&nbsp;<span>Đang theo dõi</span></p>
+            </div>
+            <div class="huyhieu">
+              Reader
+            </div>
+          </div>
+        </div>
+
+        <div class="viewInfo">
+          <div class="btn__info">
+            <button>Theo dõi</button>
+          </div>
+          <div class="icon__sharepro">
+            <i class="las la-ellipsis-v dotss"></i>
+            <span class="shareprofile">
+              <p class="sharepro">Chia sẻ hồ sơ của tôi<br /></p>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tablist_profile">
+        <div style="padding: 0 20px;">
+          <!-- Tab items -->
+          <div class="tabs_profile">
+            <div class="linepro"></div>
+            <div class="tab-item-profile active">
+              Profile
+            </div>
+          </div>
+        </div>
+        <!-- Tab content -->
+        <div class="tab-content-profile">
+          <div class="tab-pane-profile active">
+            <div class="profile-item">
+              <div style="padding: 30px 30px 0 30px;">
+                <div class="profile-title">
+                  <div class="name-titile">
+                    Hồ sơ
+                  </div>
+
+                </div>
+                <div class="date-create">
+                  <p>Ngày gia nhập: <span>Sep 22, 2021</span></p>
+                </div>
+                <div class="line-bottom"></div>
+              </div>
+
+              <div style="padding: 0 30px;">
+                <div class="profile_intro">
+                  <p>Giới thiệu</p>
+                </div>
+              </div>
+
+              <div class="view-huyhieu">
+                <div class="view_name">
+                  <span>Huy hiệu</span>
+                </div>
+                <div class="huyhieu_info">
+                  <div class="huyhieu_img">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  <div class="info_reader">
+                    <p>Reader</p>
+                    <p>reads less than 100 posts</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane-profile">
+            <div class="file-title">
+              <span>Tệp</span>
+              <p>Xem các tệp do thành viên này tải lên ở bên dưới.</p>
+              <div class="linefile-bottom"></div>
+            </div>
+            <div class="not-found">
+              <div style="text-align: center;">
+                <h2>Chưa có tệp</h2>
+                <p>Vui lòng kiểm tra lại sau</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</body>
+<script src="../JS/profile.js"></script>
+
+{% endblock %}
+{% block footer1 %}
+{% endblock %}

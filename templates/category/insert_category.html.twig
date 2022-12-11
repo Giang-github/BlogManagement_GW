@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="right">
+		<div class="right__content">
+			<div class="right__title">Dashboard</div>
+			<p class="right__desc">Insert category</p>
+			<div class="right__formWrapper">
+					{{ form_start(categoryForm) }}
+					<div class="right__inputWrapper">
+						<label for="title">Title</label>
+						{{ form_widget(categoryForm.title,{
+                                        'attr':{
+                                        'placeholder': 'Title'
+                                                }
+                                 }) }}
+					</div>
+					<div class="right__inputWrapper">
+						<label for="description">Description</label>
+						{{ form_widget(categoryForm.description ,{
+                                        'attr':{
+                                        'placeholder': 'Description'
+                                                }
+                                 }) }}
+					</div>
+                    {# <div class="right__inputWrapper" height="80px">
+						<label for="blogs">Blog</label>
+						{{ form_widget(categoryForm.blogs)}}
+					</div> #}
+                        <input type="submit" name="create_category" value="Create" class="btn btn-primary"/>
+						{{ form_end(categoryForm) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

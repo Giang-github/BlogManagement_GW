@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% block body %} 
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Dashboard</div>
+                        <p class="right__desc">Insert course</p>
+                        <div class="right__formWrapper">
+                            <form action="" method="post" id="formcourse">
+                                <div class="right__inputWrapper">
+                                    <label for="title">Image</label>
+                                    <input type="file" id="imagecourse" name="image">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="title">Title</label>
+                                    <input type="text" placeholder="Title" id="titlecourse">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="limit">Content</label>
+                                    <textarea name="" id="textcourse" cols="30" rows="10" placeholder="Write something..."></textarea>
+                                </div>
+                                <button class="btn" type="submit">ADD</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+ {% endblock %}

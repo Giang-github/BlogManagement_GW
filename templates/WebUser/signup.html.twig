@@ -1,0 +1,79 @@
+{% extends 'baselogin.html.twig' %}
+
+{% block body %}
+	<div class="dangky">
+		<div class="sign-in">
+			<div class="signin__title">
+				<div class="title_text">
+					<a href="javascript:history.go(-1)" style="color: #111;">
+						<i class="fas fa-chevron-left"></i>
+					</a>
+					<h2>Đăng nhập tài khoản</h2>
+				</div>
+				<div class="btn_close">
+					<a href="{{path ('homepage')}}">
+						<i class="far fa-times-circle"></i>
+					</a>
+				</div>
+			</div>
+			<form class="form__input" id="form">
+				<div>
+					<div class="input_control">
+						<input type="text" placeholder="Tên" id="username" name="username">
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error</small>
+					</div>
+					<div class="name_check">
+						<span>Đây là tên sẽ xuất hiện trong các bài viết của bạn. Bạn có thể sử dụng tên thật hoặc nick. Bạn không
+							              thể
+							              thay đổi tên này về sau.
+						</span>
+					</div>
+					<div class="input_control">
+						<input type="text" placeholder="Email" id="email" name="email">
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error</small>
+					</div>
+					<div class="input_control">
+						<input type="text" placeholder="Số điện thoại" id="phone" name="phone">
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error</small>
+					</div>
+					<div class="sign_bar">
+						<div class="bar"></div>
+					</div>
+					<div class="input_control">
+						<input type="password" placeholder="Mật khẩu" id="pass" name="pass">
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error</small>
+					</div>
+					<div class="input_control">
+						<input type="password" placeholder="Xác nhận mật khẩu" id="cfpass" name="cfpass">
+						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-exclamation-circle"></i>
+						<small>Error message</small>
+					</div>
+					<div class="sign_bar">
+						<div class="bar"></div>
+					</div>
+					<div class="agree">
+						<p>Tôi đồng ý với
+							<a href="">điều khoản dịch vụ</a>
+							và
+							<a href="">chính sách quyền riêng tư</a>.</p>
+					</div>
+					<div class="btn_register">
+						<button id="register_account" >Đăng ký</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+  <script src="../JS/signIn.js"></script>
+{% endblock %}
+
+

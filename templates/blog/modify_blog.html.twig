@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="right">
+		<div class="right__content">
+			<div class="right__title">Dashboard</div>
+			<p class="right__desc">Edit post</p>
+			<div class="right__formWrapper">
+				<form action="" method="post" enctype="multipart/form-data" id="formpost">
+					<div class="containdiv">
+						<div class="div">
+                        {{ form_start(blogForm) }}
+							<div class="right__inputWrapper">
+								<label for="title">Title</label>
+								{{ form_widget(blogForm.title,{
+                                        'attr':{
+                                        'placeholder': 'Title'
+                                                }
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="image">Image</label>
+								{{ form_widget(blogForm.image,{
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="content">Content</label>
+								{{ form_widget(blogForm.content,{
+                                        'attr':{
+                                        'placeholder': 'Write something...'
+										  }
+                                 }) }}
+							</div>
+							<button class="btn" onclick="submit_blog()" type="submit">EDIT BLOG</button>
+						</div>
+
+						<div class="div">
+							<div class="right__inputWrapper">
+							<label for="category">Category</label>
+								{{ form_widget(blogForm.category,{
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper"style="height: 30px">
+								<label for="category">Course</label>
+								{{ form_widget(blogForm.course,{
+                                 }) }}
+							</div>
+						{{ form_end(blogForm) }}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div> 
+{% endblock %}

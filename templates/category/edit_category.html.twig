@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block body %} 
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Dashboard</div>
+                        <p class="right__desc">edit category</p>
+                        <div class="right__formWrapper">
+                            <form action="" method="post">
+                                <div class="right__inputWrapper">
+                                    <label for="title">Title</label>
+                                    <input type="text" placeholder="Title">
+                                </div>
+                                <div class="right__inputWrapper">
+                                    <label for="desc">Description</label>
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Something..."></textarea>
+                                </div>
+                                <button class="btn" type="submit">UPDATE</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}

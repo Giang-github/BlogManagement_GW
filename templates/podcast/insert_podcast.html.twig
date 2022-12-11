@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+{% block body %} 
+                <div class="right">
+                    <div class="right__content">
+                        <div class="right__title">Dashboard</div>
+                        <p class="right__desc">Insert post</p>
+                        <div class="right__formWrapper">
+                                <div class="containdiv">
+                                    <div class="div">
+                                        <div class="right__inputWrapper">
+                                            <label for="title">Title</label>
+                                            <input type="text" id="title2" placeholder="Tiêu đề">
+                                        </div>
+                                        <div class="right__inputWrapper">
+                                            <label for="image">Image</label>
+                                            <input type="file" id="fileimage2">
+                                        </div>
+                                        <div class="right__inputWrapper">
+                                            <label for="image">Audio</label>
+                                            <input type="file" id="fileaudio2">
+                                        </div>
+
+                                        <div class="right__inputWrapper">
+                                            <label for="desc">Content</label>
+                                            <textarea name="" id="content2" cols="30" rows="15"
+                                                placeholder="Write something..."></textarea>
+                                        </div>
+                                        <button class="btn" onclick="submit_podcast()" type="submit">ADD</button>
+                                    </div>
+
+                                    <div class="div">
+                                        <div class="right__inputWrapper">
+                                            <label for="p_category">Category</label>
+                                            <select name="" id="podcasttcategoryinsert">
+                                              
+                                            </select>
+                                        </div>
+                                        <div class="right__inputWrapper" id="podcast2">
+                                            <label for="label">Course</label>
+                                            <select  name="" id="courses_name">
+
+                                            </select>
+                                        </div>
+                                        <!-- <div class="right__inputWrapper">
+                                            <label for="p_category">Rank</label>
+                                            <select name="" id="ranker2">
+                                             
+                                            </select>
+                                        </div> -->
+                                    </div>
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}
