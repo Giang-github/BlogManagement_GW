@@ -58,7 +58,7 @@ class BlogController extends AbstractController
                 'blogForm' => $form
         ]);
     }
-
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/addPost', name: 'insert_post')]
     public function add(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
     {
@@ -90,7 +90,7 @@ class BlogController extends AbstractController
                 'blogForm' => $form
         ]);
     }
-
+    #[IsGranted("ROLE_ADMIN")]
     #[Route('/viewPost', name: 'view_post')]
     public function ViewPost( BlogRepository $blogRepository  ): Response
     {
