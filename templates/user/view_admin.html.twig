@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	
+	<div class="right__title">Dashboard</div>
+	<div class="right__search">
+		<p class="right__desc">View Admin</p>
+		
+		<form class="right__inputSearch"  method="post">
+		<input placeholder="Enter name ..." type="search" name="keyword">
+        <i class="las la-search"></i>
+	</form>
+	</div>
+	<div class="right__table">
+		<div class="right__tableWrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>STT</th>
+                        <th>Email</th>
+                        <th>Full Name</th>
+						<th>Image</th>
+						<th>Phone</th>
+						<th>Birthday</th>
+                        <th>Gender</th>
+						<th colspan = "2">Actions</th>
+					</tr>
+				</thead>
+
+				<tbody class = "tag">
+					{% for admin in admins %}
+						<tr>
+							<th>{{admin.id}}</th>
+                            <th>{{admin.email}}</th>
+							<th>{{admin.fullname}}</th>
+                            <th><img src="{{('/IMG/Users/')~admin.image}}" alt="" width="80px", height"80px" ></th>
+							<th>{{admin.phone}}</th>
+							<th>{{admin.dob | date('m/d/Y')}}</th>
+                            <th>{{admin.gender}}</th>
+							<th>
+								<a href="#"><img class =" ___icon" src="assets/pen-to-square-solid.svg" alt=""></a>
+							</th>
+							<th>
+								<a href="#"><img class="___icon" src="assets/trash-can-solid.svg" alt=""></a>
+							</th>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<a style:"text-decoration-none" class="right__tableMore" href="{{ path ('view_admin')}}">
+			<p>View all</p>
+			<img src="{{asset('assets/arrow-right-black.svg')}}" alt="">
+		</a>
+	</div>
+{% endblock %}

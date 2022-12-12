@@ -78,16 +78,12 @@
                                 </div>
                             </li>
                             <li class="left__menuItem">
-                                <a href="view_customers.html" class="left__title"><img src="{{asset('assets/icon-users.svg')}}"
+                                <a href="{{path('view_user')}}" class="left__title"><img src="{{asset('assets/icon-users.svg')}}"
                                         alt="">User</a>
                             </li>
                             <li class="left__menuItem">
-                                <div class="left__title"><img src="{{asset('assets/icon-user.svg')}}" alt="">Admin<img
-                                        class="left__iconDown" src="{{asset('assets/arrow-down.svg')}}" alt=""></div>
-                                <div class="left__text">
-                                    <a class="left__link" href="insert_admin.html">Insert admin</a>
-									<a class="left__link" href="view_admins.html">View admins</a>
-                                </div>
+                                <a href="{{path('view_admin')}}" class="left__title"><img src="{{asset('assets/icon-users.svg')}}"
+                                        alt="">Admin</a>
                             </li>
                             <li class="left__menuItem">
                                 <a href="{{path('app_logout')}}" class="left__title"><img src="{{asset('assets/icon-logout.svg')}}" alt="">Logout</a>
