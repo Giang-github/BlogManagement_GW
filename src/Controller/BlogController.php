@@ -18,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 
+#[IsGranted("ROLE_ADMIN","ROLE_USER")]
 
 class BlogController extends AbstractController
 {

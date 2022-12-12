@@ -2,12 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted("ROLE_USER")]
 class WebController extends AbstractController
 {
+    #[Route('/homepage', name: 'homepage')]
+    public function index(): Response
+    {   
+		$this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+
+		/** @var User $user */
+		$user = $this->getUser();
+
+		return match ($user->isVerified()) {
+			true => $this->render("WebUser/homepage.html.twig"),
+			false => $this->render("WebUser/please-verify-email.html.twig"),
+		};
+    }
      
     #[Route('/signup', name: 'signup')]
     public function signup(): Response
@@ -15,11 +30,11 @@ class WebController extends AbstractController
         return $this->render('WebUser/signup.html.twig');
     }
      
-    #[Route('/homepage', name: 'homepage')]
-    public function homepage(): Response
-    {
-        return $this->render('WebUser/homepage.html.twig');
-    }
+    // #[Route('/homepage', name: 'homepage')]
+    // public function homepage(): Response
+    // {
+    //     return $this->render('WebUser/homepage.html.twig');
+    // }
     #[Route('/blog', name: 'blog')]
     public function blog(): Response
     {

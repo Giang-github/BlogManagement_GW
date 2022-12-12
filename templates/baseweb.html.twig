@@ -168,7 +168,9 @@
 									<span>Tất cả thông báo</span>
 								</div>
 							</ul>
-							<img src="../../IMG/dangthuhuyen_blog.jpg" class="user-img" alt="Tài khoản" title="Tài khoản" id="profile">
+							{% if app.user != null %}  
+							<img src="{{asset('/IMG/Users/'~app.user.image)}}" class="user-img" alt="Tài khoản" title="Tài khoản" id="profile">
+							{% endif %}
 							<div class="logout">
 								<ul>
 									<li>
@@ -191,8 +193,8 @@
 							<div class="login__icon">
 								<i class="fas fa-user"></i>
 							</div>
-							<a href="{{path('app_login')}}">
-								<button>Login</button>
+							<a href="{{path('app_logout')}}">
+								<button>Logout</button>
 							</a>
 						</div>
 						<div class="toggle" onclick="toggleMenu()"></div>

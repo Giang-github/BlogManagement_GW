@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted("ROLE_ADMIN","ROLE_USER")]
+
 class CategoryController extends AbstractController
 {
     #[Route('/insertCategory', name: 'insert_category')]
