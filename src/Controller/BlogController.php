@@ -13,13 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 #[IsGranted("ROLE_ADMIN")]
-
 class BlogController extends AbstractController
 {
     
@@ -61,7 +60,8 @@ class BlogController extends AbstractController
     #[IsGranted("ROLE_ADMIN")]
     #[Route('/addPost', name: 'insert_post')]
     public function add(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
-    {
+    {   
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = new Blog;
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
@@ -94,6 +94,7 @@ class BlogController extends AbstractController
     #[Route('/viewPost', name: 'view_post')]
     public function ViewPost( BlogRepository $blogRepository  ): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
          $post = $blogRepository->findAll();
         return $this->render('blog/view_blog.html.twig', [
              'posts' => $post,
