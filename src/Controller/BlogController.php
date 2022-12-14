@@ -90,6 +90,8 @@ class BlogController extends AbstractController
                 'blogForm' => $form
         ]);
     }
+
+    
     #[IsGranted("ROLE_ADMIN")]
     #[Route('/viewPost', name: 'view_post')]
     public function ViewPost( BlogRepository $blogRepository  ): Response
@@ -100,7 +102,6 @@ class BlogController extends AbstractController
              'posts' => $post,
         ]);
     }
-
 
     #[Route('/delete/{id}', name: 'post_delete')]
     public function deletePost($id, BlogRepository $blogRepository, ManagerRegistry $managerRegistry)
@@ -117,7 +118,6 @@ class BlogController extends AbstractController
         return $this->redirectToRoute('view_post');
     }
 
-
     #[Route('/asc', name: 'sort_post_name_asc')]
     public function sortNameAsc(blogRepository $blogRepository)
     {
@@ -129,8 +129,6 @@ class BlogController extends AbstractController
             ]
         );
     }
-
-
     #[Route('/desc', name: 'sort_post_name_desc')]
     public function sortNameDesc(BlogRepository $blogRepository)
     {

@@ -60,7 +60,7 @@
         <div class="blog__info">
           <div class="info">
             <div class="info__ava">
-              <img src="../../IMG/logo_vn.png" alt="">
+              <img src="{{asset('IMG/Blogs/'~blog.image)}}" alt="">
             </div>
             <div class="info__text">
               <h4>Dang Thu Huyen</h4>
@@ -80,12 +80,12 @@
         </div>
 
         <div class="blog__title">
-          Nếu bạn không học cách chấp nhận mình, ai sẽ chấp nhận bạn?
+								{{blog.title}}
         </div>
 
         <div class="blog__img">
           <div class="img__block">
-            <img src="../../IMG/book_04.jpg" alt="" class="block">
+            <img src="{{asset('IMG/Blogs/'~blog.image)}}" alt="" class="block">
           </div>
           <div class="img__none">
             <div class="flex">
@@ -95,45 +95,14 @@
           </div>
         </div>
 
-        <!-- Blog content -->
-        <div class="blog__content">
-          <p>
-            Do what you love - Làm công việc mình thích đương nhiên là câu thần chú mà ai cũng mong muốn thành hiện
-            thực. Nhưng trên thực tế thì rất nhiều người cảm thấy bất lực vì hoàn cảnh mà không với tới job mình yêu
-            thích được.
-            <br>
-            <br>
-            Trong podcast này, Phi Vân sẽ chia sẻ 3 câu hỏi phản tư giúp các bạn xây dựng được bản đồ hành trình đi
-            đến với công việc mà bạn yêu thích no matter what - dù hoàn cảnh cuộc đời bạn có ra sao.
-          </p>
-        </div>
+      
 
         <!-- Blog description -->
         <div class="blog__des">
           <div class="text__des">
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint harum odio at minima provident
-              voluptatibus,
-              illo rem eius! Atque voluptates nulla beatae, corporis aperiam nisi est officia possimus. Laudantium,
-              unde?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae pariatur voluptatibus doloremque,
-              rem
-              tenetur voluptatem! Corporis libero necessitatibus modi perferendis fugiat iste adipisci perspiciatis
-              dolores aut! Aperiam magnam esse minima?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-              rerum
-              sint reiciendis quod ut eius, sequi mollitia animi nihil pariatur officia cupiditate voluptatum neque
-              aperiam deserunt! Ipsa ut voluptatem magni.
-              <br>
-              <br>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint harum odio at minima provident
-              voluptatibus,
-              illo rem eius! Atque voluptates nulla beatae, corporis aperiam nisi est officia possimus. Laudantium,
-              unde?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae pariatur voluptatibus doloremque,
-              rem
-              tenetur voluptatem! Corporis libero necessitatibus modi perferendis fugiat iste adipisci perspiciatis
-              dolores aut! Aperiam magnam esse minima?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
-              rerum
-              sint reiciendis quod ut eius, sequi mollitia animi nihil pariatur officia cupiditate voluptatum neque
-              aperiam deserunt! Ipsa ut voluptatem magni.
+             {{blog.content}}
+            
             </p>
           </div>
         </div>
