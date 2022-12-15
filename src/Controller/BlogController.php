@@ -18,9 +18,9 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
-#[IsGranted("ROLE_ADMIN")]
+
 class BlogController extends AbstractController
-{
+{   
     
     #[Route('/editPost/{id}', name: 'edit_post')]
     public function blogEdit($id, Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger, BlogRepository $blogRepository)
@@ -53,15 +53,15 @@ class BlogController extends AbstractController
             $this->addFlash('Success', 'Edit succeed !');
             return $this->redirectToRoute('view_post');
         }
-        return $this->renderForm('blog/modify_blog.html.twig', [
+        return $this->renderForm('blog/edit_blog.html.twig', [
                 'blogForm' => $form
         ]);
     }
-    #[IsGranted("ROLE_ADMIN")]
-    #[Route('/addPost', name: 'insert_post')]
+    // #[IsGranted("ROLE_ADMIN")]
+    #[Route('/addPost', name: 'add_post')]
     public function add(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
     {   
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = new Blog;
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
@@ -86,12 +86,10 @@ class BlogController extends AbstractController
             $this->addFlash('Success', 'Add succeed !');
             return $this->redirectToRoute('view_post');
         }
-        return $this->renderForm('blog/insert_blog.html.twig', [
+        return $this->renderForm('blog/add_blog.html.twig', [
                 'blogForm' => $form
         ]);
     }
-
-    
     #[IsGranted("ROLE_ADMIN")]
     #[Route('/viewPost', name: 'view_post')]
     public function ViewPost( BlogRepository $blogRepository  ): Response
@@ -103,7 +101,8 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'post_delete')]
+
+    #[Route('/delete/{id}', name: 'delete_post')]
     public function deletePost($id, BlogRepository $blogRepository, ManagerRegistry $managerRegistry)
     {
         $post = $blogRepository->find($id);
@@ -118,6 +117,7 @@ class BlogController extends AbstractController
         return $this->redirectToRoute('view_post');
     }
 
+
     #[Route('/asc', name: 'sort_post_name_asc')]
     public function sortNameAsc(blogRepository $blogRepository)
     {
@@ -129,6 +129,8 @@ class BlogController extends AbstractController
             ]
         );
     }
+
+
     #[Route('/desc', name: 'sort_post_name_desc')]
     public function sortNameDesc(BlogRepository $blogRepository)
     {

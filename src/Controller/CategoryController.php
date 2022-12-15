@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/insertCategory', name: 'insert_category')]
+    #[Route('/addCategory', name: 'add_category')]
     public function insertCategory(Request $request, ManagerRegistry $managerRegistry): Response
     {
         $category = new Category;
@@ -44,7 +44,7 @@ class CategoryController extends AbstractController
             'categories' => $category,
         ]);
     }
-    #[Route('/deletecategory/{id}', name: 'category_delete')]
+    #[Route('/deleteCategory/{id}', name: 'delete_category')]
     public function deleteCategory($id, CategoryRepository $categoryRepository, ManagerRegistry $managerRegistry)
     {
         $category = $categoryRepository->find($id);
