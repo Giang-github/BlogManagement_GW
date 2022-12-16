@@ -36,7 +36,16 @@
 										{{ blog.course.title }}
 									</a>
 								{% else %}
-									<i>None course</i>
+									<i>None_course</i>
+								{% endif %}
+								<div class="right__inputWrapper" style="height: 30px">
+								<label>Writer</label>
+								{% if blog.writer != null %}
+									<a class="text-decoration-none" href="{{ path('view_admin')}}">
+										{{ blog.writer.fullname }}
+									</a>
+								{% else %}
+									<i>None_Writer</i>
 								{% endif %}
                                 <br><br>
                                 <div class="right__inputWrapper">

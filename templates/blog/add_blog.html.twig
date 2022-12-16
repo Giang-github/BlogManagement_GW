@@ -39,9 +39,14 @@
 								{{ form_widget(blogForm.category,{
                                  }) }}
 							</div>
-							<div class="right__inputWrapper"style="height: 30px">
-								<label for="category">Course</label>
+							<div class="right__inputWrapper">
+								<label for="course">Course</label>
 								{{ form_widget(blogForm.course,{
+                                 }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="writer">Writer</label>
+								{{ form_widget(blogForm.writer,{
                                  }) }}
 							</div>
 						{{ form_end(blogForm) }}

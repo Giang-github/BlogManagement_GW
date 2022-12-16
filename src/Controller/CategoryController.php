@@ -12,13 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[IsGranted("ROLE_ADMIN")]
-
 class CategoryController extends AbstractController
 {
     #[Route('/addCategory', name: 'add_category')]
     public function insertCategory(Request $request, ManagerRegistry $managerRegistry): Response
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $category = new Category;
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -30,7 +29,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('view_category');
         }
         return $this->renderForm(
-            'category/insert_category.html.twig',
+            'category/add_category.html.twig',
             [
                 'categoryForm' => $form
             ]
@@ -39,6 +38,7 @@ class CategoryController extends AbstractController
     #[Route('/viewCategory', name: 'view_category')]
     public function viewCategory(CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $category = $categoryRepository->findAll();
         return $this->render('category/view_category.html.twig', [
             'categories' => $category,
@@ -46,7 +46,8 @@ class CategoryController extends AbstractController
     }
     #[Route('/deleteCategory/{id}', name: 'delete_category')]
     public function deleteCategory($id, CategoryRepository $categoryRepository, ManagerRegistry $managerRegistry)
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $category = $categoryRepository->find($id);
         if ($category == null) {
             $this->addFlash('Error', 'Post not found !');
@@ -58,6 +59,29 @@ class CategoryController extends AbstractController
             $this->addFlash('Success', 'Post oject has been chanced !');
         }
         return $this->redirectToRoute('view_category');
+    }
+    #[Route('/editCategory/{id}', name: 'edit_category')]
+    public function categoryEdit($id, Request $request, ManagerRegistry $managerRegistry,  CategoryRepository $categoryRepository)
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $category = $categoryRepository->find($id);
+        if ($category == null) {
+            $this->addFlash('Error', 'Category not found !');
+            return $this->redirectToRoute('view_category');
+        }
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $manager = $managerRegistry->getManager();
+            $manager->persist($category);
+            $manager->flush();
+            $this->addFlash('Success', 'Edit succeed !');
+            return $this->redirectToRoute('view_category');
+        }
+        return $this->renderForm('category/edit_category.html.twig', [
+                'categoryForm' => $form
+        ]);
     }
 
 }

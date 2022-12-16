@@ -24,7 +24,8 @@ class BlogController extends AbstractController
     
     #[Route('/editPost/{id}', name: 'edit_post')]
     public function blogEdit($id, Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger, BlogRepository $blogRepository)
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = $blogRepository->find($id);
         if ($post == null) {
             $this->addFlash('Error', 'Post not found !');
@@ -90,7 +91,6 @@ class BlogController extends AbstractController
                 'blogForm' => $form
         ]);
     }
-    #[IsGranted("ROLE_ADMIN")]
     #[Route('/viewPost', name: 'view_post')]
     public function ViewPost( BlogRepository $blogRepository  ): Response
     {
@@ -105,6 +105,7 @@ class BlogController extends AbstractController
     #[Route('/delete/{id}', name: 'delete_post')]
     public function deletePost($id, BlogRepository $blogRepository, ManagerRegistry $managerRegistry)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = $blogRepository->find($id);
         if ($post == null) {
             $this->addFlash('Error', 'Post not found !');
@@ -163,6 +164,7 @@ class BlogController extends AbstractController
     }
     #[Route('/detailBlog/{id}', name: 'blog_detail_admin')]
   public function blogDetail ($id, BlogRepository $blogRepository) {
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
     $blog = $blogRepository->find($id);
     if ($blog == null) {
         $this->addFlash('Error', 'Invalid Blog ID !');

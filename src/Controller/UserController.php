@@ -8,12 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[IsGranted("ROLE_ADMIN")]
+
 class UserController extends AbstractController
-{
+{   
+    
     #[Route('/viewUser', name: 'view_user')]
     public function viewUser( UserRepository $userRepository  ): Response
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = $userRepository->viewUser();
         return $this->render('user/view_user.html.twig', [
              'users' => $user,
@@ -21,7 +23,8 @@ class UserController extends AbstractController
     }
     #[Route('/viewAdmin', name: 'view_admin')]
     public function viewAdmin( UserRepository $userRepository  ): Response
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $admin = $userRepository->viewAdmin();
         return $this->render('user/view_admin.html.twig', [
              'admins' => $admin,
@@ -31,7 +34,8 @@ class UserController extends AbstractController
 
     #[Route('/delete/{id}', name: 'user_delete')]
     public function deleteUser($id, UserRepository $userRepository, ManagerRegistry $managerRegistry)
-    {
+    {   
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = $userRepository->find($id);
         if ($user == null) {
             $this->addFlash('Error', 'User not found !');

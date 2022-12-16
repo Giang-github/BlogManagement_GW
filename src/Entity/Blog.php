@@ -21,7 +21,7 @@ class Blog
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 1055)]
     private ?string $content = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'blogs')]
@@ -29,6 +29,9 @@ class Blog
 
     #[ORM\ManyToOne(inversedBy: 'blogs')]
     private ?Course $course = null;
+
+    #[ORM\ManyToOne(inversedBy: 'blogs')]
+    private ?User $writer = null;
 
     public function __construct()
     {
@@ -110,6 +113,18 @@ class Blog
     public function setCourse(?Course $course): self
     {
         $this->course = $course;
+
+        return $this;
+    }
+
+    public function getWriter(): ?User
+    {
+        return $this->writer;
+    }
+
+    public function setWriter(?User $writer): self
+    {
+        $this->writer = $writer;
 
         return $this;
     }

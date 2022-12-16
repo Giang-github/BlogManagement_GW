@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Blog;
 use App\Entity\Course;
 use App\Entity\Category;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -55,10 +56,19 @@ class PostType extends AbstractType
             ]) 
             ->add('course', EntityType::class,
             [
-                'label' => 'Genre',
+                'label' => 'Course',
                 'required' => false,
                 'class' => Course::class,
                 'choice_label' => 'title',
+                'multiple' => false,
+                'expanded' => false
+            ])
+            ->add('writer', EntityType::class,
+            [
+                'label' => 'Course',
+                'required' => false,
+                'class' => User::class,
+                'choice_label' => 'fullname',
                 'multiple' => false,
                 'expanded' => false
             ])

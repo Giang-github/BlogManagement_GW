@@ -22,7 +22,6 @@
 						<th>Phone</th>
 						<th>Birthday</th>
                         <th>Gender</th>
-						<th colspan = "2">Actions</th>
 					</tr>
 				</thead>
 
@@ -36,12 +35,6 @@
 							<th>{{admin.phone}}</th>
 							<th>{{admin.dob | date('m/d/Y')}}</th>
                             <th>{{admin.gender}}</th>
-							<th>
-								<a href="#"><img class =" ___icon" src="assets/pen-to-square-solid.svg" alt=""></a>
-							</th>
-							<th>
-								<a href="#"><img class="___icon" src="assets/trash-can-solid.svg" alt=""></a>
-							</th>
 						</tr>
 					{% endfor %}
 				</tbody>
