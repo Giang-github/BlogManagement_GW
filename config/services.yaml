@@ -7,6 +7,8 @@ parameters:
  post_image: '%kernel.project_dir%/public/IMG/Blogs'
  user_image: '%kernel.project_dir%/public/IMG/Users'
  course_image: '%kernel.project_dir%/public/IMG/Courses'
+ podcast_image: '%kernel.project_dir%/public/IMG/Podcast'
+ podcast_audio: '%kernel.project_dir%/public/AUDIO'
 
 
 services:

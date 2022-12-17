@@ -1,39 +1,72 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Blog;
 use App\Entity\Podcast;
+use App\Entity\User;
 use App\Form\PodcastType;
+use App\Repository\BlogRepository;
 use App\Repository\PodcastRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class PodcastController extends AbstractController
 {
     #[Route('/addPodcast', name: 'add_podcast')]
-    public function insertPodcast(Request $request, ManagerRegistry $managerRegistry): Response
+    public function addPodcast(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $podcast = new Podcast;
         $form = $this->createForm(PodcastType::class, $podcast);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $brochureFile = $form->get('image')->getData();
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('podcast_image'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {}
+                $podcast->setImage($newFilename);
+            }
+
+            $brochureFile1 = $form->get('audio')->getData();
+            if ($brochureFile1) {
+                $originalFilename = pathinfo($brochureFile1->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile1->guessExtension();
+                try {
+                    $brochureFile1->move(
+                        $this->getParameter('podcast_audio'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {}
+                $podcast->setImage($newFilename);
+            }
             $manager = $managerRegistry->getManager();
             $manager->persist($podcast);
             $manager->flush();
-            $this->addFlash('Success', 'Add podcast succeed !');
+            $this->addFlash('Success', 'Add succeed !');
             return $this->redirectToRoute('view_podcast');
+            
         }
-        return $this->renderForm(
-            'podcast/add_podcast.html.twig',
-            [
-                'podcastForm' => $form
-            ]
-        );
+        return $this->renderForm( 'podcast/add_podcast.html.twig', [
+            'podcastForm' => $form
+        ]);
     }
-
     
     #[Route('/viewPodcast', name: 'view_podcast')]
     public function viewPodcast(PodcastRepository $podcastRepository): Response
