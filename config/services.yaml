@@ -6,6 +6,9 @@
 parameters:
  post_image: '%kernel.project_dir%/public/IMG/Blogs'
  user_image: '%kernel.project_dir%/public/IMG/Users'
+ course_image: '%kernel.project_dir%/public/IMG/Courses'
+
+
 services:
     # default configuration for services in *this* file
     _defaults:

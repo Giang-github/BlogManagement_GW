@@ -1,214 +1,125 @@
 {% extends 'baseweb.html.twig' %}
 {% block body %}
-  <div class="container">
-    <div class="course_detail">
-    <div class="main_center">
-      <div class="left_coursedt">
-        <div class="left__avaAdmin">
-          <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
-          <span>Critical Thinking - Bộ kỹ năng Tư duy phản biện</span>
-        </div>
+	<div class="container">
+		<div class="course_detail">
+			<div class="main_center">
+				<div class="left_coursedt">
+					<div class="left__avaAdmin">
+						<img src="{{asset('IMG/Courses/'~course.image)}}" alt="">
+						<span>{{course.title}}</span>
+					</div>
 
-        <div class="left__listTitle">
-          <div class="left__listcourse">
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span>Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện </span>
-              </div>
-            </a>
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__list">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-          </div>
+					<div class="left__listTitle">
+						<div class="left__listcourse">
+							<a href="" class="left__list">
+								{% for podcast in course.podcasts %}
+									<a href="" class="left__list">
+										<div class="left__itemTitleCourse">
+											<img src="{{asset('IMG/Podcast/'~podcast.image)}}">
+											<span>
+												{{ podcast.title }}</span>
+										</div>
+									</a>
+								{% endfor %}
+							</div>
 
-          <div style="border-bottom: 1px solid rgba(255,255,255, 0.3);">
-            <div class="viewmore">
-              <div class="viewmore__icon">
-                <i class="las la-angle-down"></i>
-              </div>
-              <button id="viewmore">Xem thêm</button>
-            </div>
-            <div class="viewless">
-              <div class="viewless__icon">
-                <i class="las la-angle-up"></i>
-              </div>
-              <button id="viewless">Ẩn bớt</button>
-            </div>
-          </div>
+							<div style="border-bottom: 1px solid rgba(255,255,255, 0.3);">
+								<div class="viewmore">
+									<div class="viewmore__icon">
+										<i class="las la-angle-down"></i>
+									</div>
+									<button id="viewmore">Xem thêm</button>
+								</div>
+								<div class="viewless">
+									<div class="viewless__icon">
+										<i class="las la-angle-up"></i>
+									</div>
+									<button id="viewless">Ẩn bớt</button>
+								</div>
+							</div>
+						</div>
+					</div>
 
-          <!-- Bài viết có liên quan -->
-          <div class="left__bloglike">
-            <div class="left__sameview">
-              <p>Khóa học có liên quan</p>
-            </div>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span>Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện </span>
-              </div>
-            </a>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện</span>
-              </div>
-            </a>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện </span>
-              </div>
-            </a>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện </span>
-              </div>
-            </a>
-            <a href="" class="left__listlike">
-              <div class="left__itemTitleCourse">
-                <img src="../../IMG/course.png" alt="">
-                <span> Bộ kỹ năng Tư duy phản biện </span>
-              </div>
-            </a>
+					<div class="right_coursedt">
+						<div class="right__member">
+							<p>100</p>
+							<span>&nbsp;Người tham dự&nbsp;</span>
+						</div>
+						<div class="right__bannerimg">
+							<img src="{{asset('IMG/Courses/'~course.image)}}" alt="">
+						</div>
+						<div class="right__maincontent">
+							<div class="bannercourse">
+								<div class="course_img">
+									{% for podcast in course.podcasts %}
+										<img src="{{asset('IMG/Podcast/'~podcast.image)}}">
+									{% endfor %}
+								</div>
+								<div class="course_info">
+									<p>Đặng Thu Huyền's Podcast</p>
+									{% for podcast in course.podcasts %}
+										<span>{{ podcast.title }}</span>
+									{% endfor %}
+									<div class="iconSpotify">
+										<i class="fab fa-spotify" title="Spotify"></i>
+									</div>
+								</div>
+							</div>
 
-            <div class="viewmoresame">
-              <div class="viewmore__icon">
-                <i class="las la-angle-down"></i>
-              </div>
-              <button id="viewmoresame">Xem thêm</button>
-            </div>
-            <div class="viewlesssame">
-              <div class="viewless__icon">
-                <i class="las la-angle-up"></i>
-              </div>
-              <button id="viewlesssame">Ẩn bớt</button>
-            </div>
-          </div>
-        </div>
-      </div>
+							<!-- Phần hiển thị xử lý audio  -->
+							<div class="course_audio">
+								<div class="player">
+									<div style="display: flex; justify-content: space-between; align-items: center;">
+										<div class="left">0.00</div>
+										<input id="progresspcdt" class="progresspcdt" type="range" value="0" step="1" min="0" max="100">
+										<div class="right">0.00</div>
+									</div>
+									<div class="control">
+										<div class="btn btn-repeat">
+											<i class="las la-sync-alt" title="Repeat"></i>
+										</div>
+										<div class="btn btn-prev">
+											<i class="las la-undo-alt" title="Prev 10s"></i>
+											<span>10</span>
+										</div>
+										<div class="btn btn-toggle-play">
+											<i class="fas fa-pause icon-pause"></i>
+											<i class="fas fa-play icon-play"></i>
+										</div>
+										<div class="btn btn-next">
+											<i class="las la-redo-alt" title="Skip 10s"></i>
+											<span>10</span>
+										</div>
+										<div class="btn btn-download">
+											<i class="las la-download"></i>
+										</div>
+									</div>
+									<audio id="audio" src=""></audio>
+								</div>
+							</div>
 
-      <div class="right_coursedt">
-        <div class="right__member">
-          <p>100</p><span>&nbsp;Người tham dự&nbsp;</span>
-        </div>
-        <div class="right__bannerimg">
-          <img src="../../IMG/course.png" alt="">
-        </div>
-        <div class="right__maincontent">
-          <div class="bannercourse">
-            <div class="course_img">
-              <img src="../../IMG/dangthuhuyen_blog.jpg" alt="">
-            </div>
-            <div class="course_info">
-              <p>Đặng Thu Huyền's Podcast</p>
-              <span>Khoá học Quản trị bản thân - Phần 9</span>
-              <div class="iconSpotify">
-                <i class="fab fa-spotify" title="Spotify"></i>
-              </div>
-            </div>
-          </div>
+							<!-- Nội dung mô tả podcast -->
+							<div class="pod-dt" id="podContent">
+								<div class="pod_curentime">
+									<span>Đặng Thu Huyền</span>&nbsp; | &nbsp;<span class="realdate">6/10/2021</span>
+								</div>
+								<div class="pod_des">
+									{% for podcast in course.podcasts %}
+										<p>{{ podcast.content }}</p>
+									{% endfor %}
 
-          <!-- Phần hiển thị xử lý audio  -->
-          <div class="course_audio">
-            <div class="player">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="left">0.00</div>
-                <input id="progresspcdt" class="progresspcdt" type="range" value="0" step="1" min="0" max="100">
-                <div class="right">0.00</div>
-              </div>
-              <div class="control">
-                <div class="btn btn-repeat">
-                  <i class="las la-sync-alt" title="Repeat"></i>
-                </div>
-                <div class="btn btn-prev">
-                  <i class="las la-undo-alt" title="Prev 10s"></i>
-                  <span>10</span>
-                </div>
-                <div class="btn btn-toggle-play">
-                  <i class="fas fa-pause icon-pause"></i>
-                  <i class="fas fa-play icon-play"></i>
-                </div>
-                <div class="btn btn-next">
-                  <i class="las la-redo-alt" title="Skip 10s"></i>
-                  <span>10</span>
-                </div>
-                <div class="btn btn-download">
-                  <i class="las la-download"></i>
-                </div>
-              </div>
-              <audio id="audio" src=""></audio>
-            </div>
-          </div>
+								</div>
+							</div>
 
-          <!-- Nội dung mô tả podcast -->
-          <div class="pod-dt" id="podContent">
-            <div class="pod_curentime">
-              <span>Đặng Thu Huyền</span>&nbsp; | &nbsp;<span class="realdate">6/10/2021</span>
-            </div>
-            <div class="pod_des">
-              <p>
-                Warren Buffet đã từng nói, nếu bạn muốn thành công trong cuộc sống thì một trong những điều quan trọng
-                nhất
-                bạn cần làm là: Invest in relationships with honest and ethical people - Đầu tư vào quan hệ với những
-                người
-                chân thật và có sống có giá trị đạo đức. <br><br>Đó chính là nền tảng quan trọng hay hệ thống hỗ trợ tốt
-                nhất
-                cho sự
-                thành công của một con người. Trong podcast này, Phi Vân sẽ chia sẻ 3 lý do tại sao và 3 lợi ích vững
-                bền mà
-                bạn sẽ có được khi đưa ra quyết định đầu tư có thể nói là mang tầm ảnh hưởng lớn nhất này đến cuộc đời
-                của
-                bạn.
-              </p>
-            </div>
-          </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
 
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+		<script src="../../JS/course_detail.js"></script>
 
-<script src="../../JS/course_detail.js"></script>
+	{% endblock %}
 
-{% endblock %}
-
-  {% block footer1 %}
-  {% endblock %}
-     {% block footer2 %}
-  {% endblock %}
+	{% block footer1 %}{% endblock %}
+	{% block footer2 %}{% endblock %}

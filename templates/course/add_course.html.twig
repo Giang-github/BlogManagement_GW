@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% block body %}
+	<div class="right">
+		<div class="right__content">
+			<div class="right__title">Dashboard</div>
+			<p class="right__desc">Insert course</p>
+			<div class="right__formWrapper">
+				<form action="" method="post" id="formcourse">
+					{{ form_start(courseForm) }}
+
+					<div class="right__inputWrapper">
+						<label for="title">Image</label>
+						{{ form_widget(courseForm.image,{
+                                 }) }}
+					</div>
+					<div class="right__inputWrapper">
+						<label for="title">Title</label>
+						{{ form_widget(courseForm.title,{
+                                        'attr':{
+                                        'placeholder': 'Title'
+                                                }
+                                 }) }}
+					</div>
+					<div class="right__inputWrapper">
+						<label for="limit">Description</label>
+						{{ form_widget(courseForm.description ,{
+                                        'attr':{
+                                        'placeholder': 'Description'
+                                                }
+                                 }) }}
+					</div>
+					<button class="btn" type="submit">ADD</button>
+					{{ form_end(courseForm) }}
+
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

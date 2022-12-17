@@ -11,11 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[IsGranted("ROLE_ADMIN")]
-
 class PodcastController extends AbstractController
 {
-    #[Route('/insertPodcast', name: 'insert_podcast')]
+    #[Route('/addPodcast', name: 'add_podcast')]
     public function insertPodcast(Request $request, ManagerRegistry $managerRegistry): Response
     {
         $podcast = new Podcast;
@@ -29,12 +27,14 @@ class PodcastController extends AbstractController
             return $this->redirectToRoute('view_podcast');
         }
         return $this->renderForm(
-            'podcast/insert_podcast.html.twig',
+            'podcast/add_podcast.html.twig',
             [
                 'podcastForm' => $form
             ]
         );
     }
+
+    
     #[Route('/viewPodcast', name: 'view_podcast')]
     public function viewPodcast(PodcastRepository $podcastRepository): Response
     {

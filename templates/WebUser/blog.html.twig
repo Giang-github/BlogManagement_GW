@@ -9,8 +9,8 @@
 			</div>
 			<div class="banner__text">
 				Đây là nơi Thu Huyen chia sẻ những trải nghiệm sống, làm việc, kinh doanh tại hơn 120 quốc gia và sẽ không
-				          dừng
-				          lại. Thu Huyen rất mong những trải nghiệm này sẽ giúp được cho ai đó có duyên tìm đến blog này.
+												          dừng
+												          lại. Thu Huyen rất mong những trải nghiệm này sẽ giúp được cho ai đó có duyên tìm đến blog này.
 			</div>
 		</div>
 	</div>
@@ -50,8 +50,8 @@
 					Kinh doanh và Tech
 				</div>
 				<!-- <div class="tab-item">
-				            Cuộc sống hạnh phúc
-				          </div> -->
+												            Cuộc sống hạnh phúc
+												          </div> -->
 				<div class="tab-item item_down">
 					Khác
 					<i class="fas fa-chevron-down" style="font-size: 12px;"></i>
@@ -82,9 +82,8 @@
 				<div class="tab-pane active">
 					<div class="blog__item">
 						{% for post in posts %}
-
 							<div class="item__post">
-								<a class="item__img" href="{{path('blog_detail', {'id': post.id})}}">
+								<a class="item__img" href="{{path ('blog_detail', {'id': post.id})}}">
 									<img src="{{asset('IMG/Blogs/'~post.image)}}" alt="">
 								</a>
 								<div style="display: flex;">
@@ -93,10 +92,6 @@
 											<img src="{{asset('IMG/Blogs/'~post.image)}}" alt="">
 										</div>
 										<div class="info__text">
-											{# {% for user in users %}
-												{{user.fullname}}
-												
-											{% endfor %} #}
 											<p class="realtimebl">4 giờ trước</p>
 										</div>
 										<div style="position: relative; top: -6px; left: 5px; font-size: 10px; cursor: pointer;"></div>
@@ -111,12 +106,8 @@
 								</div>
 								<div class="item__title">
 									<a href="{{path ('blog_detail', {'id': post.id})}}" style="color: black; text-decoration: none;">
-									
-                  	<h3>{{post.title}}
-										</h3>
-										<p>
-											{{post.content}}
-										</p>
+										<h3>{{post.title}}</h3>
+										<p>{{post.content}}</p>
 									</a>
 								</div>
 								<div style="border-bottom: 1px solid#ccc; width: 250px; margin: auto;"></div>

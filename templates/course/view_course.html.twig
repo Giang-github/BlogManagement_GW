@@ -18,7 +18,7 @@
 								<th>STT</th>
 								<th>Image</th>
 								<th>Title</th>
-								<th>Blog</th>
+								<th>Podcast</th>
 								<th>Content</th>
 								<th colspan="2">Action</th>
 							</tr>
@@ -28,11 +28,11 @@
 							{% for course in courses %}
 								<tr>
 									<th>{{course.id}}</th>
-									<th><img src="{{asset('IMG/Courses/'~course.image)}}" alt=""></th>
+									<th><img width=" 45px" height=" 45px" src="{{asset('IMG/Courses/'~course.image)}}" alt=""></th>
 									<th>{{course.title}}</th>
 									<th style="text-align:center">
-										{% for blog in course.blogs %}
-											{{ blog.title }}
+										{% for podcast in course.podcasts %}
+											{{ podcast.title }}
 											<br>
 										{% endfor %}
 									</th>

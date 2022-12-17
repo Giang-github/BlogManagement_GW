@@ -52,11 +52,11 @@ let podcastApp = {
     this.config[key] = value
     localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config))
   },
-  audioPodcast: [
-    {
-      audioUrl: '../../AUDIO/ThangNam.mp3'
-    }
-  ],
+  // audioPodcast: [
+  //   {
+  //     audioUrl: '../../AUDIO/audio.mp3'
+  //   }
+  // ],
 
   //Hàm load podcast
   loadPodcast: function (audioPodcast) {
@@ -277,25 +277,4 @@ function openCloseDropdown(event){
       }
   }
 }
-// let callpostapi = 'http://localhost:3000/posts/'
-// fetch(callpostapi)
-//   .then(res => {
-//     return res.json()
-//   })
-//   .then(data => {
-//     var htmls = document.getElementById('podContent')
-//     var html = data.map((post) => {
-//       return `
-//       <div class="pod_curentime">
-//         <span>${post.user.firstName +' '+ post.user.lastName}</span>&nbsp; | &nbsp;<span class="realdate">${Date(post.createdDate)}</span>
-//       </div>
-//       <div class="pod_des">
-//         <p>
-//           ${post.podContent}
-//         </p>
-//       </div>
-//       `
-//     })
-//     htmls.innerHTML = html.join('')
-//   })
 

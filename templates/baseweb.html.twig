@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,29 +38,15 @@
 									<span>
 										<i class="fas fa-chevron-down"></i>
 									</span>
+
 									<ul class="sub_menu">
-										<li>
-											<a href="{{path ('blog_title')}}">Kỹ năng tương lai</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Phát triển bản thân</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Kinh doanh và Tech</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Travel</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Cuộc sống hạnh phúc</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Thơ & Tản văn</a>
-										</li>
-										<li>
-											<a href="{{path ('blog_title')}}">Phỏng vấn báo chí</a>
-										</li>
+										  {# {% for category in categories %}
+											<li>
+												<a >{{category.title}}</a>
+											</li>
+										{% endfor %} #}
 									</ul>
+
 								</li>
 								<li class="item_02">
 									<a href="{{path ('podcast')}}" onclick="toggleMenu();">Podcast</a>
@@ -116,7 +101,7 @@
 									<a href="{{('homepage')}}#books" onclick="toggleMenu();">Sách</a>
 								</li>
 								<li class="item_05">
-									<a href="{{('courses')}}" onclick="toggleMenu();">Khóa học</a>
+									<a href="{{path ('courses')}}" onclick="toggleMenu();">Khóa học</a>
 								</li>
 							</ul>
 						</div>
@@ -168,8 +153,8 @@
 									<span>Tất cả thông báo</span>
 								</div>
 							</ul>
-							{% if app.user != null %}  
-							<img src="{{asset('/IMG/Users/'~app.user.image)}}" class="user-img" alt="Tài khoản" title="Tài khoản" id="profile">
+							{% if app.user != null %}
+								<img src="{{asset('/IMG/Users/'~app.user.image)}}" class="user-img" alt="Tài khoản" title="Tài khoản" id="profile">
 							{% endif %}
 							<div class="logout">
 								<ul>

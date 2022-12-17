@@ -30,7 +30,7 @@
 								<tr class="tag">
 									<th>{{podcast.id}}</th>
 									<th>{{podcast.title}}</th>
-									<th><img class="app_logo" src="{{podcast.image}}" alt="" width="90" height="90"></th>
+									<th><img class="app_logo" src="{{asset('IMG/Blogs/'~podcast.image)}}" alt="" width="90" height="90"></th>
 									<th>
 										<audio controls>
 											<source src="{{ asset('/AUDIO/'~podcast.audio) }}" type="audio/mpeg">
