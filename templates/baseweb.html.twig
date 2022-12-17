@@ -40,11 +40,11 @@
 									</span>
 
 									<ul class="sub_menu">
-										  {# {% for category in categories %}
+										  {% for category in categories %}
 											<li>
-												<a >{{category.title}}</a>
+												<a  href="{{path ('category_detail', {'id': category.id})}}" >{{category.title}}</a>
 											</li>
-										{% endfor %} #}
+										{% endfor %}
 									</ul>
 
 								</li>

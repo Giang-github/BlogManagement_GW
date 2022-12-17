@@ -54,7 +54,7 @@ let podcastApp = {
   },
   // audioPodcast: [
   //   {
-  //     audioUrl: '../../AUDIO/audio.mp3'
+  //     audioUrl: '../../AUDIO/.mp3'
   //   }
   // ],
 

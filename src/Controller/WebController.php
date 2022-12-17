@@ -7,6 +7,8 @@ use App\Entity\Blog;
 use App\Entity\User;
 use App\Repository\BlogRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\PostRepository;
+
 use App\Repository\CourseRepository;
 use App\Repository\PodcastRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -23,28 +25,22 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class WebController extends AbstractController
 {
     #[Route('/homepage', name: 'homepage')]
-    public function homepage(BlogRepository $blogRepository): Response
+    public function homepage(CategoryRepository $categoryRepository): Response
     {   
 		$this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
-        $post = $blogRepository->findAll();
+     $category = $categoryRepository->findAll();
 
 		/** @var User $user */
 		$user = $this->getUser();
 		return match ($user->isVerified()) {
 			true => $this->render("WebUser/homepage.html.twig",
             [
-                'posts' => $post,
+                'categories' => $category,
             ]),
 			false => $this->render("WebUser/please-verify-email.html.twig"),
            
 		};
     }
-
-    // #[Route('/homepage', name: 'homepage')]
-    // public function homepage(): Response
-    // {
-    //     return $this->render('WebUser/homepage.html.twig');
-    // }
      
     #[Route('/signup', name: 'signup')]
     public function signup(): Response
@@ -58,42 +54,52 @@ class WebController extends AbstractController
     //     return $this->render('WebUser/homepage.html.twig');
     // }
     #[Route('/blog', name: 'blog')]
-    public function blog(BlogRepository $blogRepository): Response
+    public function blog(BlogRepository $blogRepository,CategoryRepository $categoryRepository): Response
     {
         $post = $blogRepository->findAll();
+        $category = $categoryRepository->findAll();
        return $this->render('WebUser/blog.html.twig', [
             'posts' => $post,
+            'categories' => $category
+            
        ]);
     }
 
     #[Route('/blog_detail/{id}', name: 'blog_detail')]
-    public function blog_detail($id, BlogRepository $blogRepository): Response
+    public function blog_detail($id, BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
     {
         $blog = $blogRepository->find($id);
+        $category = $categoryRepository->findAll();
         if ($blog == null) {
             $this->addFlash('Error', 'Invalid Blog ID !');
             return $this->redirectToRoute('view_post');
         }
         return $this->render('WebUser/blog_detail.html.twig',
             [
-                'blog' => $blog
+                'blog' => $blog,
+                'categories' => $category
             ]);
     }
 
 
-    #[Route('/blog_title', name: 'blog_title')]
-    public function blog_title(BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
+    #[Route('/category_detail/{id}', name: 'category_detail')]
+    public function category_detail($id, BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
     {
         $post = $blogRepository->findAll();
-
         $category = $categoryRepository->findAll();
-          return $this->render('WebUser/blog_title.html.twig', [
-              'categories' => $category,
-              'posts' => $post
-         ]);
-    }
+        $category_id = $categoryRepository->find($id);
 
-    
+        if ($category_id == null) {
+            $this->addFlash('Error', 'Invalid Blog ID !');
+            return $this->redirectToRoute('view_post');
+        }
+          return $this->render('WebUser/category_detail.html.twig', [
+              'categories' => $category,
+            'posts' => $post,
+              'category' => $category_id
+         ]);
+
+    }
     // #[Route('/blog_title', name: 'blog_title')]
     // public function blog_title(CategoryRepository $categoryRepository): Response
     // {
@@ -105,21 +111,24 @@ class WebController extends AbstractController
     // }
 
     #[Route('/podcast', name: 'podcast')]
-    public function podcast( PodcastRepository $podcastRepository, BlogRepository $blogRepository): Response
+    public function podcast( PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
     {
-        $post = $blogRepository->findAll();
+
         $podcast = $podcastRepository->findAll();
+        $category = $categoryRepository->findAll();
+
         return $this->render('WebUser/podcast.html.twig', [
             'podcasts' => $podcast,
-            'posts' => $post,
+            'categories' => $category
         ]);
     }
 
 
     #[Route('/podcast_detail/{id}', name: 'podcast_detail')]
-    public function podcast_detail($id, PodcastRepository $podcastRepository): Response
+    public function podcast_detail($id, PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
     {
         $podcast = $podcastRepository->find($id);
+        $category = $categoryRepository->findAll();
         if ($podcast == null) {
             $this->addFlash('Error', 'Invalid Blog ID !');
             return $this->redirectToRoute('view_post');
@@ -127,30 +136,36 @@ class WebController extends AbstractController
         return $this->render('WebUser/podcast_detail.html.twig',
             [
                 'podcast' => $podcast,
+                'categories' => $category
             ]);
     }
 
     #[Route('/courses', name: 'courses')]
-    public function courses(CourseRepository $courseRepository): Response
+    public function courses(CourseRepository $courseRepository,  CategoryRepository $categoryRepository): Response
     {
         $course = $courseRepository->findAll();
+        $category = $categoryRepository->findAll();
+
         return $this->render('WebUser/courses.html.twig', [
             'courses' => $course,
+            'categories' => $category
         ]);
     }  
 
 
     #[Route('/course_detail/{id}', name: 'course_detail')]
-    public function course_detail($id, CourseRepository $courseRepository): Response
+    public function course_detail($id, CourseRepository $courseRepository, CategoryRepository $categoryRepository): Response
     {
         $course = $courseRepository->find($id);
+        $category = $categoryRepository->findAll();
         if ($course == null) {
             $this->addFlash('Error', 'Invalid Blog ID !');
             return $this->redirectToRoute('view_post');
         }
         return $this->render('WebUser/course_detail.html.twig',
             [
-                'course' => $course
+                'course' => $course,
+                'categories' => $category
             ]);
     }
 
