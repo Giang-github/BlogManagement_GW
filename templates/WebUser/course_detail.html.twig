@@ -45,9 +45,6 @@
 							<p>100</p>
 							<span>&nbsp;Người tham dự&nbsp;</span>
 						</div>
-						<div class="right__bannerimg">
-							<img src="{{asset('IMG/Courses/'~course.image)}}" alt="">
-						</div>
 						<div class="right__maincontent">
 							<div class="bannercourse">
 								<div class="course_img">
@@ -67,36 +64,38 @@
 							</div>
 
 							<!-- Phần hiển thị xử lý audio  -->
-							<div class="course_audio">
-								<div class="player">
-									<div style="display: flex; justify-content: space-between; align-items: center;">
-										<div class="left">0.00</div>
-										<input id="progresspcdt" class="progresspcdt" type="range" value="0" step="1" min="0" max="100">
-										<div class="right">0.00</div>
+							{% for podcast in course.podcasts %}
+								<div class="course_audio">
+									<div class="player">
+										<div style="display: flex; justify-content: space-between; align-items: center;">
+											<div class="left">0.00</div>
+											<input id="progresspcdt" class="progresspcdt" type="range" value="0" step="1" min="0" max="100">
+											<div class="right">0.00</div>
+										</div>
+										<div class="control">
+											<div class="btn btn-repeat">
+												<i class="las la-sync-alt" title="Repeat"></i>
+											</div>
+											<div class="btn btn-prev">
+												<i class="las la-undo-alt" title="Prev 10s"></i>
+												<span>10</span>
+											</div>
+											<div class="btn btn-toggle-play">
+												<i class="fas fa-pause icon-pause"></i>
+												<i class="fas fa-play icon-play"></i>
+											</div>
+											<div class="btn btn-next">
+												<i class="las la-redo-alt" title="Skip 10s"></i>
+												<span>10</span>
+											</div>
+											<div class="btn btn-download">
+												<i class="las la-download"></i>
+											</div>
+										</div>
+										<audio id="audio" src="{{ asset('/AUDIO/'~podcast.audio)}}"></audio>
 									</div>
-									<div class="control">
-										<div class="btn btn-repeat">
-											<i class="las la-sync-alt" title="Repeat"></i>
-										</div>
-										<div class="btn btn-prev">
-											<i class="las la-undo-alt" title="Prev 10s"></i>
-											<span>10</span>
-										</div>
-										<div class="btn btn-toggle-play">
-											<i class="fas fa-pause icon-pause"></i>
-											<i class="fas fa-play icon-play"></i>
-										</div>
-										<div class="btn btn-next">
-											<i class="las la-redo-alt" title="Skip 10s"></i>
-											<span>10</span>
-										</div>
-										<div class="btn btn-download">
-											<i class="las la-download"></i>
-										</div>
-									</div>
-									<audio id="audio" src=""></audio>
 								</div>
-							</div>
+							{% endfor %}
 
 							<!-- Nội dung mô tả podcast -->
 							<div class="pod-dt" id="podContent">

@@ -17,7 +17,6 @@
 		<div class="blog__itemTitle">
 
 			{% for post in category.posts %}
-
 				<div class="item__post">
 					<a class="item__img" href="{{path ('blog_detail', {'id': post.id})}}">
 						<img src="{{asset('IMG/Blogs/'~post.image)}}" alt="">
@@ -55,7 +54,7 @@
 						99</i>
 				</div>
 			</div>
-		{% endfor %} 
+		{% endfor %}  
 	</div>
 
 	<div class="pagination" style="padding: 10px 0 20px 0;">
