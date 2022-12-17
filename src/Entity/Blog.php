@@ -21,7 +21,7 @@ class Blog
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 1055)]
+    #[ORM\Column(length: 10000)]
     private ?string $content = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'blogs')]

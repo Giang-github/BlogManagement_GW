@@ -19,7 +19,7 @@ class Podcast
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 10000)]
     private ?string $content = null;
 
     #[ORM\Column(length: 255)]
