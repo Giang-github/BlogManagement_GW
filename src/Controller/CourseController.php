@@ -30,15 +30,14 @@ class CourseController extends AbstractController
     }
 
     #[Route('/addCourse', name: 'add_course')]
-    public function addCourse(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
-    // https://symfony.com/doc/current/controller/upload_file.html
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');  
+    public function add(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
+    {   
+         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $course = new Course;
         $form = $this->createForm(CourseType::class, $course);
-        $form->handleRequest($request); 
-        if ($form->isSubmitted() && $form->isValid())
-         {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
             $brochureFile = $form->get('image')->getData();
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -50,7 +49,7 @@ class CourseController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {}
-                $course->setImage($newFilename);  
+                $course->setImage($newFilename);
             }
             $manager = $managerRegistry->getManager();
             $manager->persist($course);
@@ -58,12 +57,9 @@ class CourseController extends AbstractController
             $this->addFlash('Success', 'Add succeed !');
             return $this->redirectToRoute('view_course');
         }
-        return $this->renderForm(
-            'course/add_course.html.twig',
-            [
+        return $this->renderForm('course/add_course.html.twig', [
                 'courseForm' => $form
-            ]
-        );
+        ]);
     }
 
     #[Route('/deletecourse/{id}', name: 'course_delete')]

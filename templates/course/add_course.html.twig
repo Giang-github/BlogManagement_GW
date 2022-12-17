@@ -3,37 +3,39 @@
 	<div class="right">
 		<div class="right__content">
 			<div class="right__title">Dashboard</div>
-			<p class="right__desc">Insert course</p>
+			<p class="right__desc">Insert Course</p>
 			<div class="right__formWrapper">
-				<form action="" method="post" id="formcourse">
-					{{ form_start(courseForm) }}
-
-					<div class="right__inputWrapper">
-						<label for="title">Image</label>
-						{{ form_widget(courseForm.image,{
-                                 }) }}
-					</div>
-					<div class="right__inputWrapper">
-						<label for="title">Title</label>
-						{{ form_widget(courseForm.title,{
+				<form action="" method="post" enctype="multipart/form-data" >
+					<div class="containdiv">
+						<div class="div">
+                        {{ form_start(courseForm) }}
+							<div class="right__inputWrapper">
+								<label for="title">Title</label>
+								{{ form_widget(courseForm.title,{
                                         'attr':{
                                         'placeholder': 'Title'
                                                 }
                                  }) }}
-					</div>
-					<div class="right__inputWrapper">
-						<label for="limit">Description</label>
-						{{ form_widget(courseForm.description ,{
-                                        'attr':{
-                                        'placeholder': 'Description'
-                                                }
+							</div>
+							<div class="right__inputWrapper">
+								<label for="image">Image</label>
+								{{ form_widget(courseForm.image,{
                                  }) }}
+							</div>
+							<div class="right__inputWrapper">
+								<label for="description">Content</label>
+								{{ form_widget(courseForm.description,{
+                                        'attr':{
+                                        'placeholder': 'Write something...'
+										  }
+                                 }) }}
+							</div>
+							<button class="btn" onclick="submit_blog()" type="submit">ADD COURSE</button>
+						</div>
+						{{ form_end(courseForm) }}
 					</div>
-					<button class="btn" type="submit">ADD</button>
-					{{ form_end(courseForm) }}
-
 				</form>
 			</div>
 		</div>
-	</div>
+	</div> 
 {% endblock %}

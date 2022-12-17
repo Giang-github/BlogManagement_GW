@@ -37,15 +37,12 @@ class CourseType extends AbstractType
                         'maxlength' => 250,
                     ]
             ])
-            ->add(
-                'image',
-                FileType::class,
-                [
-                    'label' => 'Course image',
-                    'data_class' => null,
-                    'required' => is_null($builder->getData()->getImage())
-                ]
-            )
+            ->add('image', FileType::class,
+            [
+                'label' => 'Course Image',
+                'data_class' => null,
+                'required' => is_null ($builder->getData()->getImage())
+            ])
         ;
     }
 
