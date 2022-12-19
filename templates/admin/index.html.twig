@@ -1,44 +1,37 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Hello Admin
 {% endblock %}
-
 {% block body %}
-
-	{# <div class="example-wrapper">
-	    <h1>hello {{ app.user.email }}</h1>
-	    <a href="{{ path('app_logout') }}">Logout</a>
-	</div> #}
 	<div class="right">
 		<div class="right__content">
 			<div class="right__title">Dashboard</div>
 			<p class="right__desc">Dashboard</p>
 			<div class="right__cards">
-				<a class="right__card" href="view_user">
+				<a class="right__card" style="text-decoration: none" href="{{path('view_user')}}">
 					<div class="right__cardTitle">User</div>
-					<div class="right__cardNumber">00</div>
-					<div class="right__cardDesc">View detail
+					<div class="right__cardNumber">05</div>
+					<div class="right__cardDesc">View All
 						<img src="assets/arrow-right.svg" alt="">
 					</div>
 				</a>
-				<a class="right__card" href="{{path('view_post')}}">
+				<a class="right__card" style="text-decoration: none" href="{{path('view_post')}}">
 					<div class="right__cardTitle">All blogs</div>
-					<div class="right__cardNumber">00</div>
-					<div class="right__cardDesc">View detail
+					<div class="right__cardNumber">10</div>
+					<div class="right__cardDesc">View All
 						<img src="assets/arrow-right.svg" alt="">
 					</div>
 				</a>
-				<a class="right__card" href="{{path('view_podcast')}}">
+				<a class="right__card" style="text-decoration: none" href="{{path('view_podcast')}}">
 					<div class="right__cardTitle">All podcast</div>
-					<div class="right__cardNumber">00</div>
-					<div class="right__cardDesc">View detail
+					<div class="right__cardNumber">09</div>
+					<div class="right__cardDesc">View All
 						<img src="assets/arrow-right.svg" alt="">
 					</div>
 				</a>
-				<a class="right__card" href="{{path('view_course')}}">
+				<a class="right__card" style="text-decoration: none" href="{{path('view_course')}}">
 					<div class="right__cardTitle">All courses</div>
-					<div class="right__cardNumber">00</div>
-					<div class="right__cardDesc">View detail
+					<div class="right__cardNumber">08</div>
+					<div class="right__cardDesc">View All
 						<img src="assets/arrow-right.svg" alt="">
 					</div>
 				</a>
