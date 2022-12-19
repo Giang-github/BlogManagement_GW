@@ -43,10 +43,6 @@ class PodcastController extends AbstractController
                 }
                 $podcast->setImage($newFilename);
             }
-            $manager = $managerRegistry->getManager();
-            $manager->persist($podcast);
-            $manager->flush();
-
             $brochureFile1 = $form->get('audio')->getData();
             if ($brochureFile1) {
                 $originalFilename1 = pathinfo($brochureFile1->getClientOriginalName(), PATHINFO_FILENAME);
@@ -59,7 +55,7 @@ class PodcastController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
-                $podcast->setImage($newFilename1);
+                $podcast->setAudio($newFilename1);
             }
             $manager = $managerRegistry->getManager();
             $manager->persist($podcast);

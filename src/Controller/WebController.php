@@ -139,7 +139,23 @@ class WebController extends AbstractController
                 'categories' => $category
             ]);
     }
-
+    // #[Route('/podcast_detail_byCourse/{id}', name: 'podcast_detail_byCourse')]
+    // public function podcast_detail_byCourse($id,CourseRepository $courseRepository, PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
+    // {
+    //     $podcast = $podcastRepository->find($id);
+    //     $category = $categoryRepository->findAll();
+    //     $course = $courseRepository->find($id);
+    //     if ($podcast == null) {
+    //         $this->addFlash('Error', 'Invalid Blog ID !');
+    //         return $this->redirectToRoute('course_detail');
+    //     }
+    //     return $this->render('WebUser/podcast_detail_byCourse.html.twig',
+    //         [   
+    //             'course' => $course,
+    //             'podcast' => $podcast,
+    //             'categories' => $category
+    //         ]);
+    // }
     #[Route('/courses', name: 'courses')]
     public function courses(CourseRepository $courseRepository,  CategoryRepository $categoryRepository): Response
     {

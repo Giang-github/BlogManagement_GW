@@ -62,15 +62,9 @@ class PodcastType extends AbstractType
                 'audio',
                 FileType::class,
                 [
-                    'label' => ' Podcast audio',
-                    'row_attr' => [
-                        'maxSize' => '256M',
-                        'mimeTypes' => [
-                            'application/octet-stream',
-                            'audio/mpeg',
-                            'audio/mp3'
-                        ]
-                    ]
+                    'label' => 'Podcast Audio',
+                    'data_class' => null,
+                    'required' => is_null($builder->getData()->getAudio())
                 ]
             )
 
