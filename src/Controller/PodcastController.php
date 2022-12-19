@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Blog;
 use App\Entity\Podcast;
 use App\Entity\User;
@@ -27,8 +28,7 @@ class PodcastController extends AbstractController
         $podcast = new Podcast;
         $form = $this->createForm(PodcastType::class, $podcast);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $brochureFile = $form->get('image')->getData();
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -39,35 +39,39 @@ class PodcastController extends AbstractController
                         $this->getParameter('podcast_image'),
                         $newFilename
                     );
-                } catch (FileException $e) {}
+                } catch (FileException $e) {
+                }
                 $podcast->setImage($newFilename);
             }
+            $manager = $managerRegistry->getManager();
+            $manager->persist($podcast);
+            $manager->flush();
 
             $brochureFile1 = $form->get('audio')->getData();
             if ($brochureFile1) {
-                $originalFilename = pathinfo($brochureFile1->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile1->guessExtension();
+                $originalFilename1 = pathinfo($brochureFile1->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename1 = $slugger->slug($originalFilename1);
+                $newFilename1 = $safeFilename1 . '-' . uniqid() . '.' . $brochureFile1->guessExtension();
                 try {
                     $brochureFile1->move(
                         $this->getParameter('podcast_audio'),
-                        $newFilename
+                        $newFilename1
                     );
-                } catch (FileException $e) {}
-                $podcast->setImage($newFilename);
+                } catch (FileException $e) {
+                }
+                $podcast->setImage($newFilename1);
             }
             $manager = $managerRegistry->getManager();
             $manager->persist($podcast);
             $manager->flush();
             $this->addFlash('Success', 'Add succeed !');
             return $this->redirectToRoute('view_podcast');
-            
         }
-        return $this->renderForm( 'podcast/add_podcast.html.twig', [
+        return $this->renderForm('podcast/add_podcast.html.twig', [
             'podcastForm' => $form
         ]);
     }
-    
+
     #[Route('/viewPodcast', name: 'view_podcast')]
     public function viewPodcast(PodcastRepository $podcastRepository): Response
     {
@@ -82,7 +86,6 @@ class PodcastController extends AbstractController
         $podcast = $podcastRepository->find($id);
         if ($podcast == null) {
             $this->addFlash('Error', 'Post not found !');
-
         } else {
             $manager = $managerRegistry->getManager();
             $manager->remove($podcast);

@@ -62,6 +62,7 @@ class PodcastType extends AbstractType
                 'audio',
                 FileType::class,
                 [
+                    'label' => ' Podcast audio',
                     'row_attr' => [
                         'maxSize' => '256M',
                         'mimeTypes' => [
