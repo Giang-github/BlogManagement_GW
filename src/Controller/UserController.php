@@ -1,17 +1,12 @@
 <?php
-
 namespace App\Controller;
-
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
 class UserController extends AbstractController
 {   
-    
     #[Route('/viewUser', name: 'view_user')]
     public function viewUser( UserRepository $userRepository  ): Response
     {   
@@ -30,7 +25,6 @@ class UserController extends AbstractController
              'admins' => $admin,
         ]);
     }
-
 
     #[Route('/delete/{id}', name: 'user_delete')]
     public function deleteUser($id, UserRepository $userRepository, ManagerRegistry $managerRegistry)

@@ -18,11 +18,11 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class BlogController extends AbstractController
-{   
-    
+{
+
     #[Route('/editPost/{id}', name: 'edit_post')]
     public function blogEdit($id, Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger, BlogRepository $blogRepository)
-    {   
+    {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = $blogRepository->find($id);
         if ($post == null) {
@@ -31,8 +31,7 @@ class BlogController extends AbstractController
         }
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $brochureFile = $form->get('image')->getData();
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -43,7 +42,8 @@ class BlogController extends AbstractController
                         $this->getParameter('post_image'),
                         $newFilename
                     );
-                } catch (FileException $e) {}
+                } catch (FileException $e) {
+                }
                 $post->setImage($newFilename);
             }
             $manager = $managerRegistry->getManager();
@@ -53,19 +53,18 @@ class BlogController extends AbstractController
             return $this->redirectToRoute('view_post');
         }
         return $this->renderForm('blog/edit_blog.html.twig', [
-                'blogForm' => $form
+            'blogForm' => $form
         ]);
     }
     // #[IsGranted("ROLE_ADMIN")]
     #[Route('/addPost', name: 'add_post')]
     public function add(Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger)
-    {   
-         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = new Blog;
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) 
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             $brochureFile = $form->get('image')->getData();
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -76,7 +75,8 @@ class BlogController extends AbstractController
                         $this->getParameter('post_image'),
                         $newFilename
                     );
-                } catch (FileException $e) {}
+                } catch (FileException $e) {
+                }
                 $post->setImage($newFilename);
             }
             $manager = $managerRegistry->getManager();
@@ -86,16 +86,16 @@ class BlogController extends AbstractController
             return $this->redirectToRoute('view_post');
         }
         return $this->renderForm('blog/add_blog.html.twig', [
-                'blogForm' => $form
+            'blogForm' => $form
         ]);
     }
     #[Route('/viewPost', name: 'view_post')]
-    public function ViewPost( BlogRepository $blogRepository  ): Response
+    public function ViewPost(BlogRepository $blogRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-         $post = $blogRepository->findAll();
+        $post = $blogRepository->findAll();
         return $this->render('blog/view_blog.html.twig', [
-             'posts' => $post,
+            'posts' => $post,
         ]);
     }
 
@@ -116,7 +116,6 @@ class BlogController extends AbstractController
         return $this->redirectToRoute('view_post');
     }
 
-
     #[Route('/asc', name: 'sort_post_name_asc')]
     public function sortNameAsc(blogRepository $blogRepository)
     {
@@ -128,7 +127,6 @@ class BlogController extends AbstractController
             ]
         );
     }
-
 
     #[Route('/desc', name: 'sort_post_name_desc')]
     public function sortNameDesc(BlogRepository $blogRepository)
@@ -149,8 +147,7 @@ class BlogController extends AbstractController
         $post = $blogRepository->searchBlog($title);
         if ($post == null) {
             $this->addFlash('Error', 'Blog not found !');
-        }
-        else{
+        } else {
             $this->addFlash('Success', 'Blog oject has been chanced !');
         }
         return $this->render(
@@ -159,21 +156,22 @@ class BlogController extends AbstractController
                 'posts' => $post
             ]
         );
-        
     }
+
     #[Route('/detailBlog/{id}', name: 'blog_detail_admin')]
-  public function blogDetail ($id, BlogRepository $blogRepository) {
-    $this->denyAccessUnlessGranted('ROLE_ADMIN');
-    $blog = $blogRepository->find($id);
-    if ($blog == null) {
-        $this->addFlash('Error', 'Invalid Blog ID !');
-        return $this->redirectToRoute('view_post');
+    public function blogDetail($id, BlogRepository $blogRepository)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $blog = $blogRepository->find($id);
+        if ($blog == null) {
+            $this->addFlash('Error', 'Invalid Blog ID !');
+            return $this->redirectToRoute('view_post');
+        }
+        return $this->render(
+            'blog/detailBlog.html.twig',
+            [
+                'blog' => $blog
+            ]
+        );
     }
-    return $this->render('blog/detailBlog.html.twig',
-        [
-            'blog' => $blog
-        ]);
-  }
-
-
 }
