@@ -68,6 +68,57 @@ class PodcastController extends AbstractController
         ]);
     }
 
+    #[Route('/editPodcast/{id}', name: 'edit_podcast')]
+    public function blogEdit($id, Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger, PodcastRepository $podcastRepository)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $podcast = $podcastRepository->find($id);
+        if ($podcast == null) {
+            $this->addFlash('Error', 'Podcast not found !');
+            return $this->redirectToRoute('view_podcast');
+        }
+        $form = $this->createForm(PodcastType::class, $podcast);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $brochureFile = $form->get('image')->getData();
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('podcast_image'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                }
+                $podcast->setImage($newFilename);
+            }
+            $brochureFile1 = $form->get('audio')->getData();
+            if ($brochureFile1) {
+                $originalFilename1 = pathinfo($brochureFile1->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename1 = $slugger->slug($originalFilename1);
+                $newFilename1 = $safeFilename1 . '-' . uniqid() . '.' . $brochureFile1->guessExtension();
+                try {
+                    $brochureFile1->move(
+                        $this->getParameter('podcast_audio'),
+                        $newFilename1
+                    );
+                } catch (FileException $e) {
+                }
+                $podcast->setAudio($newFilename1);
+            }
+            $manager = $managerRegistry->getManager();
+            $manager->persist($podcast);
+            $manager->flush();
+            $this->addFlash('Success', 'Edit succeed !');
+            return $this->redirectToRoute('view_podcast');
+        }
+        return $this->renderForm('podcast/edit_podcast.html.twig', [
+            'podcastForm' => $form
+        ]);
+    }
+
     #[Route('/viewPodcast', name: 'view_podcast')]
     public function viewPodcast(PodcastRepository $podcastRepository): Response
     {
@@ -109,4 +160,5 @@ class PodcastController extends AbstractController
             ]
         );
     }
+   
 }

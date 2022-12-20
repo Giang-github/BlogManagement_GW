@@ -38,10 +38,10 @@
 									</th>
 									<th>{{course.description}}</th>
 									<th>
-										<a href="http://"><img class=" ___icon" src="assets/icon-edit.svg" alt=""></a>
+										<a href="{{ path ('edit_course', {'id': course.id})}}"><img class=" ___icon" src="assets/icon-edit.svg" alt=""></a>
 									</th>
 									<th>
-										<a href="{{ path ('course_delete', {'id': course.id})}}"><img class="___icon" src="assets/icon-trash.svg" alt=""></a>
+										<a href="{{ path ('delete_course', {'id': course.id})}}"><img class="___icon" src="assets/icon-trash.svg" alt=""></a>
 									</th>
 								</tr>
 							{% endfor %}

@@ -43,7 +43,9 @@
 									<th>{{podcast.category.title}}</th>
 									</th>
 									<th>{{podcast.content}}</th>
-									<th><img class=" ___icon" src="assets/pen-to-square-solid.svg" alt=""></th>
+									<th>
+									<a href="{{path ('edit_podcast',{'id': podcast.id})}}" ><img class=" ___icon" src="assets/pen-to-square-solid.svg" alt=""></a>
+									</th>
 									<th>
 										<a href="{{ path ('podcast_delete', {'id': podcast.id})}}"><img class="___icon" src="assets/trash-can-solid.svg" alt=""></a>
 									</th>

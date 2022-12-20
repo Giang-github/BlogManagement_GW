@@ -62,7 +62,44 @@ class CourseController extends AbstractController
         ]);
     }
 
-    #[Route('/deletecourse/{id}', name: 'course_delete')]
+    #[Route('/editCourse/{id}', name: 'edit_course')]
+    public function edit($id, Request $request, ManagerRegistry $managerRegistry, SluggerInterface $slugger, CourseRepository $courseRepository)
+    {   
+         $this->denyAccessUnlessGranted('ROLE_ADMIN');
+         $course = $courseRepository->find($id);
+         if ($course == null) {
+            $this->addFlash('Error', 'Course not found !');
+            return $this->redirectToRoute('view_course');
+        }
+        $form = $this->createForm(CourseType::class, $course);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $brochureFile = $form->get('image')->getData();
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                try {
+                    $brochureFile->move(
+                        $this->getParameter('course_image'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {}
+                $course->setImage($newFilename);
+            }
+            $manager = $managerRegistry->getManager();
+            $manager->persist($course);
+            $manager->flush();
+            $this->addFlash('Success', 'Edit succeed !');
+            return $this->redirectToRoute('view_course');
+        }
+        return $this->renderForm('course/edit_course.html.twig', [
+                'courseForm' => $form
+        ]);
+    }
+
+    #[Route('/deletecourse/{id}', name: 'delete_course')]
     public function deleteCourse($id, CourseRepository $courseRepository, ManagerRegistry $managerRegistry)
     {
         $course = $courseRepository->find($id);
