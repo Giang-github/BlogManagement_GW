@@ -22,17 +22,17 @@
 				<div class="banner__des">
 					<p>
 						This is where I share personal experiences and learnings on entrepreneurship, personal development, and life
-						            in
-						            general through my journey traveling, living, working, and learning around the world, just to be a better
-						            person.
-						            Đây là nơi Phi chia sẻ trải nghiệm và bài học<span id="point">...</span>
+																								            in
+																								            general through my journey traveling, living, working, and learning around the world, just to be a better
+																								            person.
+																								            Đây là nơi Phi chia sẻ trải nghiệm và bài học<span id="point">...</span>
 						<span id="more">
 							cá nhân mà Phi Vân
-							              học được về kinh doanh, phát triển bản thân
-							              và
-							              trởthành chính mình, trên hành trình sống, làm việc, học tập tại
-							              hơn
-							              120 quốc gia và sẽ không dừng lại.</span>
+																												              học được về kinh doanh, phát triển bản thân
+																												              và
+																												              trởthành chính mình, trên hành trình sống, làm việc, học tập tại
+																												              hơn
+																												              120 quốc gia và sẽ không dừng lại.</span>
 					</p>
 					<button onclick="myFunction()" id="myBtn">Read more</button>
 				</div>
@@ -42,8 +42,11 @@
 			<div class="searchPod">
 				<div class="tab_search">
 					<i class="fas fa-search search"></i>
-					<input class="inputSearch" type="text" placeholder="Search podcast...">
+					<form class="right__inputSearch" action="{{path ('search_podcast')}}" method="post">
+						<input class="inputSearch" placeholder="Enter name ..." type="search" name="keyword">
+					</form>
 				</div>
+
 			</div>
 
 			<!-- List podcast -->
@@ -52,7 +55,7 @@
 
 					<div class="pod">
 						<a class="podcast_item" href="{{path ('podcast_detail', {'id': podcast.id})}}">
-							<div class="item_ava"> 
+							<div class="item_ava">
 								<img src="{{asset('IMG/Podcast/'~podcast.image)}}">
 							</div>
 							<i class="fas fa-play-circle"></i>
@@ -72,21 +75,18 @@
 						</a>
 						<div style="width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.2); margin: 25px 0;"></div>
 					</div>
-          	{% endfor %}
-				</div>
-
-				<!-- Load more -->
-				<div class="load__more">
-					<a href="" id="loadMore">
-						<button>Load More</button>
-					</a>
-				</div>
-
+				{% endfor %}
 			</div>
+
+			<!-- Load more -->
+			<div class="load__more">
+				<a href="" id="loadMore">
+					<button>Load More</button>
+				</a>
+			</div>
+
 		</div>
-	</body>
+	</div>
+</body>
 
-	<script src="../JS/podcast.js"></script>
-
-{% endblock %}
-{% block footer1 %}{% endblock %}
+<script src="../JS/podcast.js"></script>{% endblock %}{% block footer1 %}{% endblock %}

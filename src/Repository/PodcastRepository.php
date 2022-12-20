@@ -39,6 +39,16 @@ class PodcastRepository extends ServiceEntityRepository
         }
     }
 
+    public function searchPodcast($title) 
+{
+    return $this->createQueryBuilder('podcast')
+        ->andWhere('podcast.title LIKE :n')
+        ->setParameter('n', '%' . $title . '%')
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
 //    /**
 //     * @return Podcast[] Returns an array of Podcast objects
 //     */

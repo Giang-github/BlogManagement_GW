@@ -6,7 +6,10 @@
 			<div class="right__search">
 				<p class="right__desc">View podcasts</p>
 				<div class="right__inputSearch">
-					<input type="text" placeholder="Search here...">
+					{# <input type="text" placeholder="Search here..."> #}
+					<form class="right__inputSearch" action="{{path ('search_podcastadmin')}}" method="post">
+
+					<input placeholder="Enter name ..." type="search" name="keyword">
 					<i class="las la-search"></i>
 				</div>
 			</div>

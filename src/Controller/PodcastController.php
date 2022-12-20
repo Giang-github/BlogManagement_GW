@@ -90,4 +90,23 @@ class PodcastController extends AbstractController
         }
         return $this->redirectToRoute('view_podcast');
     }
+
+    #[Route('/searchpodcastadmin', name: 'search_podcastadmin')]
+    public function searchPodcast(Request $request, PodcastRepository $podcastRepository)
+    {
+        $title = $request->get('keyword');
+        $podcast = $podcastRepository->searchPodcast($title);
+        if ($podcast == null) {
+            $this->addFlash('Error', 'Podcast not found !');
+        }
+        else{
+            $this->addFlash('Success', 'Podcast oject has been chanced !');
+        }
+        return $this->render(
+            'podcast/view_podcast.html.twig',
+            [
+                'podcasts' => $podcast
+            ]
+        );
+    }
 }

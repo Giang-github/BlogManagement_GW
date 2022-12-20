@@ -93,6 +93,25 @@ class WebController extends AbstractController
         );
     }
 
+    #[Route('/searchpodcast', name: 'search_podcast')]
+    public function searchPodcast(Request $request, PodcastRepository $podcastRepository)
+    {
+        $title = $request->get('keyword');
+        $podcast = $podcastRepository->searchPodcast($title);
+        if ($podcast == null) {
+            $this->addFlash('Error', 'Podcast not found !');
+        }
+        else{
+            $this->addFlash('Success', 'Podcast oject has been chanced !');
+        }
+        return $this->render(
+            'WebUser/podcast.html.twig',
+            [
+                'podcasts' => $podcast
+            ]
+        );
+    }
+
     #[Route('/podcast', name: 'podcast')]
     public function podcast( PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
     {
