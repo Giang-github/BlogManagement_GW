@@ -133,7 +133,7 @@ class BlogController extends AbstractController
     #[Route('/desc', name: 'sort_post_name_desc')]
     public function sortNameDesc(BlogRepository $blogRepository)
     {
-        $post = $blogRepository->sortpostNameDesc();
+        $post = $blogRepository->sortBlogNameDesc();
         return $this->render(
             'blog/view_blog.html.twig',
             [
@@ -142,16 +142,16 @@ class BlogController extends AbstractController
         );
     }
 
-    #[Route('/search', name: 'search_post')]
-    public function searchPost(Request $request, BlogRepository $blogRepository)
+    #[Route('/search', name: 'search_blog')]
+    public function searchBlog(Request $request, BlogRepository $blogRepository)
     {
         $title = $request->get('keyword');
-        $post = $blogRepository->searchPost($title);
+        $post = $blogRepository->searchBlog($title);
         if ($post == null) {
-            $this->addFlash('Error', 'Post not found !');
+            $this->addFlash('Error', 'Blog not found !');
         }
         else{
-            $this->addFlash('Success', 'Post oject has been chanced !');
+            $this->addFlash('Success', 'Blog oject has been chanced !');
         }
         return $this->render(
             'blog/view_blog.html.twig',
@@ -159,6 +159,7 @@ class BlogController extends AbstractController
                 'posts' => $post
             ]
         );
+        
     }
     #[Route('/detailBlog/{id}', name: 'blog_detail_admin')]
   public function blogDetail ($id, BlogRepository $blogRepository) {

@@ -80,7 +80,7 @@ public function sortBlogNameAsc()
         ->getResult();
 }
 
-public function sortpostNameDesc()
+public function sortBlogNameDesc()
 {
     return $this->createQueryBuilder('post')
         ->orderBy('post.title', 'DESC')
@@ -88,7 +88,7 @@ public function sortpostNameDesc()
         ->getResult();
 }
 
-public function searchPost($title) 
+public function searchBlog($title) 
 {
     return $this->createQueryBuilder('post')
         ->andWhere('post.title LIKE :n')
