@@ -82,24 +82,24 @@ class WebController extends AbstractController
     }
 
 
-    #[Route('/category_detail/{id}', name: 'category_detail')]
-    public function category_detail($id, BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
-    {
-        $post = $blogRepository->findAll();
-        $category = $categoryRepository->findAll();
-        $category_id = $categoryRepository->find($id);
+    // #[Route('/category_detail/{id}', name: 'category_detail')]
+    // public function category_detail($id, BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
+    // {
+    //     $post = $blogRepository->findAll();
+    //     $category = $categoryRepository->findAll();
+    //     $category_id = $categoryRepository->find($id);
 
-        if ($category_id == null) {
-            $this->addFlash('Error', 'Invalid Blog ID !');
-            return $this->redirectToRoute('view_post');
-        }
-          return $this->render('WebUser/category_detail.html.twig', [
-              'categories' => $category,
-            'posts' => $post,
-              'category' => $category_id
-         ]);
+    //     if ($category_id == null) {
+    //         $this->addFlash('Error', 'Invalid Blog ID !');
+    //         return $this->redirectToRoute('view_post');
+    //     }
+    //       return $this->render('WebUser/category_detail.html.twig', [
+    //           'categories' => $category,
+    //         'posts' => $post,
+    //           'category' => $category_id
+    //      ]);
 
-    }
+    // }
     // #[Route('/blog_title', name: 'blog_title')]
     // public function blog_title(CategoryRepository $categoryRepository): Response
     // {
@@ -186,16 +186,26 @@ class WebController extends AbstractController
     }
 
     #[Route('/profile', name: 'profile')]
-    public function profile(): Response
+    public function profile(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('WebUser/profile.html.twig');
+        $category = $categoryRepository->findAll();
+
+        return $this->render('WebUser/profile.html.twig',
+        [
+            'categories' => $category
+        ]);
     }
 
 
     #[Route('/public_profile', name: 'public_profile')]
-    public function public_profile(): Response
+    public function public_profile(CategoryRepository $categoryRepository): Response
 
     {
-        return $this->render('WebUser/public_profile.html.twig');
+        $category = $categoryRepository->findAll();
+
+        return $this->render('WebUser/public_profile.html.twig',
+        [
+            'categories' => $category
+        ]);
     }
 }

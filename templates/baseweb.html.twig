@@ -38,14 +38,14 @@
 									<span>
 										<i class="fas fa-chevron-down"></i>
 									</span>
-
+{# 
 									<ul class="sub_menu">
 										  {% for category in categories %}
 											<li>
 												<a  href="{{path ('category_detail', {'id': category.id})}}" >{{category.title}}</a>
 											</li>
 										{% endfor %}
-									</ul>
+									</ul> #}
 
 								</li>
 								<li class="item_02">
@@ -53,7 +53,7 @@
 									<span>
 										<i class="fas fa-chevron-down"></i>
 									</span>
-									<ul class="sub_menu">
+									{# <ul class="sub_menu">
 										<li>
 											<a href="">Câu chuyện kinh doanh</a>
 										</li>
@@ -75,7 +75,7 @@
 										<li>
 											<a href="">Phỏng vấn báo chí</a>
 										</li>
-									</ul>
+									</ul> #}
 								</li>
 								<li class="item_02">
 									<a href="" onclick="toggleMenu();">Thư viện</a>
