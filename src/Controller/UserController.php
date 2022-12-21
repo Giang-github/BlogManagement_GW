@@ -16,6 +16,7 @@ class UserController extends AbstractController
              'users' => $user,
         ]);
     }
+
     #[Route('/viewAdmin', name: 'view_admin')]
     public function viewAdmin( UserRepository $userRepository  ): Response
     {   
