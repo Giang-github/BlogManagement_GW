@@ -13,12 +13,17 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface {
 
    public function __construct(RouterInterface $routerInterface)
    {
+      // $this->session = $sessionInterface;
+
       $this->router = $routerInterface;
    }
 
    public function handle(Request $request, AccessDeniedException $accessDeniedException): ?Response
    {
-      return new RedirectResponse($this->router->generate('app_login'));
-   }
+       //gửi error message về trang base (layout)
+      //  $this->session->getFlashBag()->add("Warning","Access Denied !");
+       //redirect về trang login (homepage)
+       return new RedirectResponse($this->router->generate('app_login'));
+    }
 }
 ?>

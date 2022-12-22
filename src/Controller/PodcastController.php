@@ -28,9 +28,14 @@ class PodcastController extends AbstractController
         $podcast = new Podcast;
         $form = $this->createForm(PodcastType::class, $podcast);
         $form->handleRequest($request);
+           //kiểm tra xem người dùng có muốn upload ảnh mới hay không
+            //nếu có thì thực hiện code upload ảnh
+            //nếu không thì bỏ qua
         if ($form->isSubmitted() && $form->isValid()) {
             $brochureFile = $form->get('image')->getData();
             if ($brochureFile) {
+                         //B1: lấy ra ảnh vừa upload
+
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
@@ -41,6 +46,8 @@ class PodcastController extends AbstractController
                     );
                 } catch (FileException $e) {
                 }
+                         //B6: set dữ liệu của image vào object book
+
                 $podcast->setImage($newFilename);
             }
             $brochureFile1 = $form->get('audio')->getData();
@@ -57,10 +64,17 @@ class PodcastController extends AbstractController
                 }
                 $podcast->setAudio($newFilename1);
             }
+                     //lưu dữ liệu của book vào DB
+        //dùng Manager để lưu object vào DB
+
             $manager = $managerRegistry->getManager();
             $manager->persist($podcast);
             $manager->flush();
+                    //gửi thông báo về view bằng addFlash
+
             $this->addFlash('Success', 'Add succeed !');
+                  //redirect về trang book store
+
             return $this->redirectToRoute('view_podcast');
         }
         return $this->renderForm('podcast/add_podcast.html.twig', [

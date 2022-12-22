@@ -119,6 +119,7 @@ class BlogController extends AbstractController
     #[Route('/asc', name: 'sort_post_name_asc')]
     public function sortNameAsc(blogRepository $blogRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = $blogRepository->sortBlogNameAsc();
         return $this->render(
             'blog/view_blog.html.twig',
@@ -131,6 +132,7 @@ class BlogController extends AbstractController
     #[Route('/desc', name: 'sort_post_name_desc')]
     public function sortNameDesc(BlogRepository $blogRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $post = $blogRepository->sortBlogNameDesc();
         return $this->render(
             'blog/view_blog.html.twig',
@@ -143,6 +145,7 @@ class BlogController extends AbstractController
     #[Route('/search', name: 'search_blog')]
     public function searchBlog(Request $request, BlogRepository $blogRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $title = $request->get('keyword');
         $post = $blogRepository->searchBlog($title);
         if ($post == null) {

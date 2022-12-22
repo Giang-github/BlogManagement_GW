@@ -24,7 +24,7 @@ class WebController extends AbstractController
     #[Route('/homepage', name: 'homepage')]
     public function homepage(CategoryRepository $categoryRepository): Response
     {   
-		$this->denyAccessUnlessGranted("IS_AUTHENTICATED_FULLY");
+        $this->denyAccessUnlessGranted('ROLE_USER');
      $category = $categoryRepository->findAll();
 
 		/** @var User $user */
@@ -47,6 +47,7 @@ class WebController extends AbstractController
     #[Route('/blog', name: 'blog')]
     public function blog(UserRepository $userRepository, BlogRepository $blogRepository,CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $blog = $blogRepository->findAll();
         $user = $userRepository->findAll();      
         // $admin = $userRepository->findAll();
@@ -62,6 +63,7 @@ class WebController extends AbstractController
     #[Route('/blog_detail/{id}', name: 'blog_detail')]
     public function blog_detail($id, BlogRepository $blogRepository, CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $blog = $blogRepository->find($id);
         $category = $categoryRepository->findAll();
         if ($blog == null) {
@@ -77,6 +79,7 @@ class WebController extends AbstractController
     #[Route('/searchblogwebuser', name: 'search_bloguser')]
     public function searchBlog(Request $request, BlogRepository $blogRepository)
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $title = $request->get('keyword');
         $blog = $blogRepository->searchBlog($title);
         if ($blog == null) {
@@ -115,7 +118,7 @@ class WebController extends AbstractController
     #[Route('/podcast', name: 'podcast')]
     public function podcast( PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
     {
-
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $podcast = $podcastRepository->findAll();
         $category = $categoryRepository->findAll();
 
@@ -157,6 +160,7 @@ class WebController extends AbstractController
     #[Route('/course_detail/{id}', name: 'course_detail')]
     public function course_detail($id, CourseRepository $courseRepository, CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $course = $courseRepository->find($id);
         $category = $categoryRepository->findAll();
         if ($course == null) {
@@ -173,8 +177,8 @@ class WebController extends AbstractController
     #[Route('/profile', name: 'profile')]
     public function profile(CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $category = $categoryRepository->findAll();
-
         return $this->render('WebUser/profile.html.twig',
         [
             'categories' => $category
@@ -183,10 +187,9 @@ class WebController extends AbstractController
 
     #[Route('/public_profile', name: 'public_profile')]
     public function public_profile(CategoryRepository $categoryRepository): Response
-
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $category = $categoryRepository->findAll();
-
         return $this->render('WebUser/public_profile.html.twig',
         [
             'categories' => $category

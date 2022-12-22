@@ -23,6 +23,7 @@ class CourseController extends AbstractController
     #[Route('/viewCourse', name: 'view_course')]
     public function viewCourse(CourseRepository $courseRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $course = $courseRepository->findAll();
         return $this->render('course/view_course.html.twig', [
             'courses' => $course,
@@ -102,6 +103,7 @@ class CourseController extends AbstractController
     #[Route('/deletecourse/{id}', name: 'delete_course')]
     public function deleteCourse($id, CourseRepository $courseRepository, ManagerRegistry $managerRegistry)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $course = $courseRepository->find($id);
         if ($course == null) {
             $this->addFlash('Error', 'Post not found !');
