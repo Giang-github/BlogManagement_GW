@@ -3,12 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Course;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class CourseType extends AbstractType
 {
@@ -27,6 +29,27 @@ class CourseType extends AbstractType
                     ]
                 ]
             )
+            ->add(
+                'stardate',
+                DateType::class,
+                [
+                    'required' => true,
+                    'widget' => 'single_text'  //input type="date" (HTML)
+                ]
+            )
+            // ->add(
+            //     'enddate',
+            //     DateType::class,
+            //     [
+            //         'required' => true,
+            //         'widget' => 'single_text'  //input type="date" (HTML)
+            //     ]
+            // )
+            ->add('price', MoneyType::class,
+            [
+                'label' => 'Course price',
+                'currency' => 'USD'
+            ])
             ->add(
                 'description',TextareaType::class,
                 [
