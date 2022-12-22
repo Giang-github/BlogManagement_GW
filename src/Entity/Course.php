@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CourseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CourseRepository::class)]
@@ -29,6 +30,15 @@ class Course
 
     #[ORM\OneToMany(mappedBy: 'course', targetEntity: Blog::class)]
     private Collection $blogs;
+
+    #[ORM\Column]
+    private ?int $price = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $stardate = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $enddate = null;
 
     public function __construct()
     {
@@ -135,6 +145,42 @@ class Course
                 $blog->setCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getStardate(): ?\DateTimeInterface
+    {
+        return $this->stardate;
+    }
+
+    public function setStardate(\DateTimeInterface $stardate): self
+    {
+        $this->stardate = $stardate;
+
+        return $this;
+    }
+
+    public function getEnddate(): ?\DateTimeInterface
+    {
+        return $this->enddate;
+    }
+
+    public function setEnddate(\DateTimeInterface $enddate): self
+    {
+        $this->enddate = $enddate;
 
         return $this;
     }

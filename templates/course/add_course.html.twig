@@ -30,7 +30,31 @@
 										  }
                                  }) }}
 							</div>
+							
 							<button class="btn" onclick="submit_blog()" type="submit">ADD COURSE</button>
+							</div>
+							<div class="div">
+							<div class="right__inputWrapper">
+								<label for="stardate">Start Date</label>
+								{{ form_widget(courseForm.stardate,{
+                                        'attr':{
+                                        'placeholder': 'Start date'
+                                                }
+                                 }) }}
+							</div>
+							{# <div class="right__inputWrapper">
+								<label for="enddate">End Date</label>
+								{{ form_widget(courseForm.enddate,{
+                                 }) }}
+							</div> #}
+							<div class="right__inputWrapper">
+								<label for="price">Price</label>
+								{{ form_widget(courseForm.price,{
+                                        'attr':{
+                                        'placeholder': 'Enter price !!!.'
+										  }
+                                 }) }}
+							</div>
 						</div>
 						{{ form_end(courseForm) }}
 					</div>
