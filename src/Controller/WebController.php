@@ -24,9 +24,8 @@ class WebController extends AbstractController
     #[Route('/homepage', name: 'homepage')]
     public function homepage(CategoryRepository $categoryRepository): Response
     {   
-        $this->denyAccessUnlessGranted('ROLE_USER');
-     $category = $categoryRepository->findAll();
-
+    $this->denyAccessUnlessGranted('ROLE_USER');
+    $category = $categoryRepository->findAll();
 		/** @var User $user */
 		$user = $this->getUser();
 		return match ($user->isVerified()) {
@@ -37,12 +36,6 @@ class WebController extends AbstractController
 			false => $this->render("WebUser/please-verify-email.html.twig"),
            
 		};
-    }
-     
-    #[Route('/signup', name: 'signup')]
-    public function signup(): Response
-    {
-        return $this->render('WebUser/signup.html.twig');
     }
     #[Route('/blog', name: 'blog')]
     public function blog(UserRepository $userRepository, BlogRepository $blogRepository,CategoryRepository $categoryRepository): Response
@@ -147,6 +140,8 @@ class WebController extends AbstractController
     #[Route('/courses', name: 'courses')]
     public function courses(CourseRepository $courseRepository,  CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
         $course = $courseRepository->findAll();
         $category = $categoryRepository->findAll();
 

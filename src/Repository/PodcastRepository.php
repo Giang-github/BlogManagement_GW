@@ -38,7 +38,6 @@ class PodcastRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
     public function searchPodcast($title) 
 {
     return $this->createQueryBuilder('podcast')
@@ -47,6 +46,41 @@ class PodcastRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult()
     ;
+}
+
+public function sortPodcastByIdDesc()
+{
+    return $this->createQueryBuilder('podcast')
+        ->orderBy('podcast.id', 'DESC')
+        ->getQuery()
+        ->getResult();
+
+}
+
+public function sortPodcastByIdAsc()
+{
+    return $this->createQueryBuilder('podcast')
+        ->orderBy('podcast.id', 'Asc')
+        ->getQuery()
+        ->getResult();
+        
+}
+
+public function sortPodcastNameAsc()
+{
+    return $this->createQueryBuilder('podcast')
+        ->orderBy('podcast.content', 'ASC')
+        ->getQuery()
+        ->getResult();
+}
+
+
+public function sortPodcastNameDesc()
+{
+    return $this->createQueryBuilder('podcast')
+        ->orderBy('podcast.content', 'DESC')
+        ->getQuery()
+        ->getResult();
 }
 
 //    /**

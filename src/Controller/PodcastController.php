@@ -136,7 +136,7 @@ class PodcastController extends AbstractController
     #[Route('/viewPodcast', name: 'view_podcast')]
     public function viewPodcast(PodcastRepository $podcastRepository): Response
     {
-        $podcast = $podcastRepository->findAll();
+        $podcast = $podcastRepository->sortPodcastByIdDesc();
         return $this->render('podcast/view_podcast.html.twig', [
             'podcasts' => $podcast,
         ]);
@@ -174,5 +174,32 @@ class PodcastController extends AbstractController
             ]
         );
     }
+
+    #[Route('/ascpodcast', name: 'sort_podcast_name_asc')]
+    public function sortNameAsc(podcastRepository $podcastRepository)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $podcast = $podcastRepository->sortPodcastNameAsc();
+        return $this->render(
+            'podcast/view_podcast.html.twig',
+            [
+                'podcasts' => $podcast
+            ]
+        );
+    }
+
+    #[Route('/descpodcast', name: 'sort_podcast_name_desc')]
+    public function sortNameDesc(podcastRepository $podcastRepository)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $podcast = $podcastRepository->sortPodcastNameDesc();
+        return $this->render(
+            'podcast/view_podcast.html.twig',
+            [
+                'podcasts' => $podcast
+            ]
+        );
+    }
+
    
 }

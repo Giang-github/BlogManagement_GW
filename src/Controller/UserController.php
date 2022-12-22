@@ -27,7 +27,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'user_delete')]
+    #[Route('/deleteuser/{id}', name: 'user_delete')]
     public function deleteUser($id, UserRepository $userRepository, ManagerRegistry $managerRegistry)
     {   
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
