@@ -20,9 +20,9 @@
 								<th>Title</th>
 								<th>Podcast</th>
 								<th>Content</th>
-								<th>Start Date</th>
+								{# <th>Start Date</th>
 								<th>End Date</th>
-								<th>Price</th>
+								<th>Price</th> #}
 								<th colspan="2">Action</th>
 							</tr>
 						</thead>
@@ -40,9 +40,9 @@
 										{% endfor %}
 									</th>
 									<th>{{course.description}}</th>
-									<th>{{course.stardate | date('d/m/Y')}}</th>
+									{# <th>{{course.stardate | date('d/m/Y')}}</th>
 										<th>{{course.stardate|date_modify("+30 day")|date("d/m/Y") }}</th>
-										<th>{{course.price }}$</th>
+										<th>{{course.price }}$</th> #}
 										<th>
 											<a href="{{ path ('edit_course', {'id': course.id})}}"><img class=" ___icon" src="assets/icon-edit.svg" alt=""></a>
 										</th>

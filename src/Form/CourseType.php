@@ -29,27 +29,27 @@ class CourseType extends AbstractType
                     ]
                 ]
             )
-            ->add(
-                'stardate',
-                DateType::class,
-                [
-                    'required' => true,
-                    'widget' => 'single_text'  //input type="date" (HTML)
-                ]
-            )
             // ->add(
-            //     'enddate',
+            //     'stardate',
             //     DateType::class,
             //     [
             //         'required' => true,
             //         'widget' => 'single_text'  //input type="date" (HTML)
             //     ]
             // )
-            ->add('price', MoneyType::class,
-            [
-                'label' => 'Course price',
-                'currency' => 'USD'
-            ])
+            // // ->add(
+            // //     'enddate',
+            // //     DateType::class,
+            // //     [
+            // //         'required' => true,
+            // //         'widget' => 'single_text'  //input type="date" (HTML)
+            // //     ]
+            // // )
+            // ->add('price', MoneyType::class,
+            // [
+            //     'label' => 'Course price',
+            //     'currency' => 'USD'
+            // ])
             ->add(
                 'description',TextareaType::class,
                 [
