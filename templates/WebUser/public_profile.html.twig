@@ -8,11 +8,11 @@
 
 			<div class="out_publicProfile">
 				<div class="out_des">
-					<p>Đây là cách các thành viên khác của cộng đồng trực tuyến xem hồ sơ của bạn</p>
+					<p>This is how other members of the online community view your profile</p>
 				</div>
 				<div class="out_btn">
 					<a href="{{path ('profile')}}">
-						<button>Thoát chế độ xem trước</button>
+						<button>Exit preview mode</button>
 					</a>
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 					<div class="categories__menu">
 						<ul class="menu">
 							<li>
-								<a href="" onclick="toggleMenu();">Trang chủ</a>
+								<a href="" onclick="toggleMenu();">Homepage</a>
 							</li>
 							<li class="item_02">
 								<a href="">Blog</a>
@@ -88,7 +88,7 @@
 								</ul>
 							</li>
 							<li class="item_02">
-								<a href="" onclick="toggleMenu();">Thư viện</a>
+								<a href="" onclick="toggleMenu();">book</a>
 								<span>
 									<i class="fas fa-chevron-down"></i>
 								</span>
@@ -107,11 +107,12 @@
 									</li>
 								</ul>
 							</li>
-							<li>
-								<a href="" onclick="toggleMenu();">Sách</a>
-							</li>
+							
 							<li class="item_05">
-								<a href="" onclick="toggleMenu();">Khóa học</a>
+								<a href="" onclick="toggleMenu();">course</a>
+							</li>
+							<li>
+								<a href="" onclick="toggleMenu();">about us</a>
 							</li>
 						</ul>
 					</div>
@@ -157,9 +158,9 @@
 							<div class="info__name">
 								{{ app.user.fullname }}
 								<div class="follow">
-									<p>0&nbsp;<span>Người theo dõi</span>
+									<p>0&nbsp;<span>Followers</span>
 									</p>&nbsp;&#8226;&nbsp;
-									<p>0&nbsp;<span>Đang theo dõi</span>
+									<p>0&nbsp;<span>Following</span>
 									</p>
 								</div>
 								<div class="huyhieu">
@@ -172,12 +173,12 @@
 
 					<div class="viewInfo">
 						<div class="btn__info">
-							<button>Theo dõi</button>
+							<button>Follow</button>
 						</div>
 						<div class="icon__sharepro">
 							<i class="las la-ellipsis-v dotss"></i>
 							<span class="shareprofile">
-								<p class="sharepro">Chia sẻ hồ sơ của tôi<br/></p>
+								<p class="sharepro">Share my profile<br/></p>
 							</span>
 						</div>
 					</div>
@@ -201,12 +202,12 @@
 								<div style="padding: 30px 30px 0 30px;">
 									<div class="profile-title">
 										<div class="name-titile">
-											Hồ sơ
+											Profile
 										</div>
 
 									</div>
 									<div class="date-create">
-										<p>Ngày gia nhập:
+										<p>Joining date:
 											<span>Sep 22, 2021</span>
 										</p>
 									</div>
@@ -215,13 +216,13 @@
 
 								<div style="padding: 0 30px;">
 									<div class="profile_intro">
-										<p>Giới thiệu</p>
+										<p>Introduction</p>
 									</div>
 								</div>
 
 								<div class="view-huyhieu">
 									<div class="view_name">
-										<span>Huy hiệu</span>
+										<span>Badge</span>
 									</div>
 									<div class="huyhieu_info">
 										<div class="huyhieu_img">

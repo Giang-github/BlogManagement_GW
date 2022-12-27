@@ -30,29 +30,35 @@ class RegistrationController extends AbstractController
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppAuthenticator $authenticator, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
-    {
-		$user = new User();
+    {$user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setRoles(["ROLE_USER"]);
             $brochureFile = $form->get('image')->getData();
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
             if ($brochureFile) {
                 $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '-' . uniqid() . '.' . $brochureFile->guessExtension();
+                // Move the file to the directory where brochures are stored
                 try {
                     $brochureFile->move(
                         $this->getParameter('user_image'),
                         $newFilename
                     );
-                } catch (FileException $e) {}
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
                 $user->setImage($newFilename);
             }
             // encode the plain password
             $user->setPassword(
-            $userPasswordHasher->hashPassword(
+                $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
@@ -61,7 +67,9 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('Giang_demo@gmail.com', 'Nguyen Thanh Giang'))
                     ->to($user->getEmail())
@@ -99,6 +107,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'Your email address has been verified.');
 
-		return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('homepage');
     }
 }

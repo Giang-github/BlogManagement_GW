@@ -19,10 +19,9 @@ class AccessDeniedHandler implements AccessDeniedHandlerInterface {
    }
 
    public function handle(Request $request, AccessDeniedException $accessDeniedException): ?Response
-   {
-       //gửi error message về trang base (layout)
-      //  $this->session->getFlashBag()->add("Warning","Access Denied !");
-       //redirect về trang login (homepage)
+   {   //send error message to base page (layout)
+       // $this->session->getFlashBag()->add("Warning","Access Denied !");
+        //redirect to login page (homepage)
        return new RedirectResponse($this->router->generate('app_login'));
     }
 }
