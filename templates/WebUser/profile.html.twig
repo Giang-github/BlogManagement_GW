@@ -8,7 +8,7 @@
 		<div class="share__profile">
 			<div class="profile__content">
 				<div>
-					<div class="profile__title">Chia sẻ hồ sơ của tôi trên</div>
+					<div class="profile__title">Share my profile on</div>
 					<div class="profile__icon">
 						<i class="fab fa-facebook"></i>
 						<i class="fab fa-twitter"></i>
@@ -26,7 +26,7 @@
 			<div class="update-url-content">
 				<div class="update_title">
 					<div>
-						<p>Chỉnh sửa URL cá nhân hóa của bạn</p>
+						<p>Edit your personalized URL</p>
 					</div>
 					<div>
 						<i class="las la-times" id="closeUpdateUrl"></i>
@@ -34,18 +34,18 @@
 				</div>
 				<div class="update_des">
 					<p>
-						Đây URL cá nhân hóa của bạn mà các thành viên có thể. Bạn có thể thay đổi phần URL này với tối đa 255 chữ
-												            cái
-												            bao gồm cả chữ cái và số. Sau khi lưu, đây sẽ là đường dẫn trực tiếp tới trang cá nhân của bạn
+						This is your personalized URL that members can. You can change this part of the URL with up to 255 characters
+						female
+						including letters and numbers. Once saved, this will be a direct link to your profile
 					</p>
 				</div>
 				<div class="update_urlInput">
-					<label for="">Phần url của bạn</label><br>
+					<label for="">Your url</label><br>
 					<input type="text" value="https://www.nguyenphivan.com/profile/dangthuhuyen/profile">
 				</div>
 				<div class="update_btn">
-					<button id="leaveupdate">Hủy</button>
-					<button>Lưu</button>
+					<button id="leaveupdate">Cancel</button>
+					<button>Save</button>
 				</div>
 			</div>
 		</div>
@@ -58,17 +58,17 @@
 					</div>
 				</div>
 				<div class="private_title">
-					<p>Đặt hồ sơ ở chế độ riêng tư</p>
+					<p>Make your profile private</p>
 				</div>
 				<div class="private_des">
 					<p>
-						Nếu ở chế độ riêng tư, hồ sơ của bạn sẽ không hiển thị với các thành viên khác, bạn không thể bình luận hoặc
-												            thích bài đăng và không thể theo dõi thành viên. Ngoài ra bạn sẽ rời khỏi nhóm đã tham gia
+						If you're private, your profile won't be visible to other members, you can't comment or
+						liked the post and couldn't follow the member. Also you will leave the joined group
 					</p>
 				</div>
 				<div class="private_btn">
-					<button id="leaveprivate">Hủy</button>
-					<button>Xác nhận</button>
+					<button id="leaveprivate">Cancal</button>
+					<button>Confirm</button>
 				</div>
 			</div>
 		</div>
@@ -81,16 +81,16 @@
 					</div>
 				</div>
 				<div class="outcourse_title">
-					<p>Thoát chương trình</p>
+					<p>Exit the program</p>
 				</div>
 				<div class="outcourse_des">
 					<p>
-						Tiến độ của bạn sẽ được lưu
+						Your progress will be saved
 					</p>
 				</div>
 				<div class="outcourse_btn">
-					<button id="leavecourse">Hủy</button>
-					<button>Rời đi</button>
+					<button id="leavecourse">Cancel</button>
+					<button>Leave</button>
 				</div>
 			</div>
 		</div>
@@ -103,16 +103,16 @@
 					</div>
 				</div>
 				<div class="deploy_title">
-					<p>Hủy Blog Member ?</p>
+					<p>Out Blog Member ?</p>
 				</div>
 				<div class="deploy_des">
 					<p>
-						Nếu bạn hủy, bạn sẽ không có quyền truy cập vào gói và các quyền lợi của gói kể từ bây giờ
+						If you cancel, you will not have access to the plan and its benefits from now on
 					</p>
 				</div>
 				<div class="deploy_btn">
-					<button id="leavedeploy">Giữ lại</button>
-					<button>Đúng, hủy</button>
+					<button id="leavedeploy">Keep</button>
+					<button>Yes, cancel</button>
 				</div>
 			</div>
 		</div>
@@ -127,9 +127,9 @@
 						<div class="info__name">
 							{{ app.user.fullname }}
 							<div class="follow">
-								<p>0&nbsp;<span>Người theo dõi</span>
+								<p>0&nbsp;<span>Followers</span>
 								</p>&nbsp;&#8226;&nbsp;
-								<p>0&nbsp;<span>Đang theo dõi</span>
+								<p>0&nbsp;<span>Following</span>
 								</p>
 							</div>
 							<div class="huyhieu">
@@ -143,15 +143,15 @@
 			<div class="viewInfo">
 				<div class="btn__info">
 					<a href="{{ path ('public_profile')}}">
-						<button>Xem hồ sơ công khai</button>
+						<button>View public profile</button>
 					</a>
 				</div>
 				<div class="icon__sharepro">
 					<i class="las la-ellipsis-v dotss"></i>
 					<span class="shareprofile">
-						<p class="sharepro">Chia sẻ hồ sơ của tôi<br/></p>
+						<p class="sharepro">Share my profile<br/></p>
 						<p>
-							<a href="">Chỉnh sửa hồ sơ</a>
+							<a href="">Edit Profile</a>
 						</p>
 					</span>
 				</div>
@@ -170,7 +170,7 @@
 						Files
 					</div>
 					<div class="tab-item-profile">
-						My L&D Center
+						My Course
 					</div>
 					<div class="tab-item-profile">
 						My Subscriptions
@@ -193,15 +193,15 @@
 						<div style="padding: 30px 30px 0 30px;">
 							<div class="profile-title">
 								<div class="name-titile">
-									Hồ sơ
+									Profile
 								</div>
 								<div class="btn_fix">
 									<i class="fas fa-pencil-alt"></i>
-									<button id="fix_profile">Chỉnh sửa hồ sơ</button>
+									<button id="fix_profile">Edit my profile</button>
 								</div>
 							</div>
 							<div class="date-create">
-								<p>Ngày gia nhập:
+								<p>Joining date:
 									<span>Sep 22, 2021</span>
 								</p>
 							</div>
@@ -210,9 +210,9 @@
 
 						<div style="padding: 0 30px;">
 							<div class="profile_intro">
-								<p>Giới thiệu</p>
+								<p>Introduction</p>
 								<div style="padding: 20px 0;">
-									<textarea class="sharesomething" id="" placeholder="Hãy chia sẻ điều gì đó về bạn..."></textarea>
+									<textarea class="sharesomething" id="" placeholder="Please share something about yourself..."></textarea>
 								</div>
 							</div>
 							<div class="line-bottom"></div>
@@ -229,13 +229,13 @@
 							</div>
 						</div>
 						<div class="btn-outprofile">
-							<button>Bỏ</button>
-							<button>Xuất bản</button>
+							<button>Cancel</button>
+							<button>Export</button>
 						</div>
 
 						<div class="view-huyhieu">
 							<div class="view_name">
-								<span>Huy hiệu</span>
+								<span>Armorial</span>
 							</div>
 							<div class="huyhieu_info">
 								<div class="huyhieu_img">
@@ -266,8 +266,8 @@
 
 				<div class="tab-pane-profile">
 					<div class="file-title">
-						<span>Chương trình của tôi</span>
-						<p>Kiểm tra trạng thái của các chương trình..</p>
+						<span>My Course</span>
+						<p>Check the status of the course..</p>
 						<div class="linefile-bottom"></div>
 					</div>
 					<div class="found-course">
@@ -277,12 +277,12 @@
 							</div>
 							<div>
 								<p>Critical Thinking - Bộ kỹ năng Tư duy phản biện</p>
-								<label for="">Giá:</label>
+								<label for="">Price:</label>
 								<span>Blog member</span><br/>
-								<label for="">Thời lượng:</label>
-								<span>Không giới hạn thời gian</span><br>
+								<label for="">Time:</label>
+								<span>Unlimited time</span><br>
 								<p id="openoutcourse">
-									Rời khỏi chương trình
+									Leaving the course
 								</p>
 							</div>
 
@@ -294,13 +294,13 @@
 								<img src="../../IMG/course.png" alt="">
 							</div>
 							<div>
-								<p>Critical Thinking - Bộ kỹ năng Tư duy phản biện</p>
-								<label for="">Giá:</label>
+									<p>Critical Thinking - Bộ kỹ năng Tư duy phản biện</p>
+								<label for="">Price:</label>
 								<span>Blog member</span><br/>
-								<label for="">Thời lượng:</label>
-								<span>Không giới hạn thời gian</span>
+								<label for="">Time:</label>
+								<span>Unlimited time</span><br>
 								<p id="openoutcourse">
-									Rời khỏi chương trình
+									Leaving the course
 								</p>
 							</div>
 						</div>
@@ -439,9 +439,9 @@
 
 				<div class="tab-pane-profile">
 					<div class="profile-item">
-						<div class="setting_title">
+						{# <div class="setting_title">
 							<div>
-								<h2>Thiết lập thông báo</h2>
+								<h2>Subscribe to the blog</h2>
 							</div>
 							<div class="linefile-bottom"></div>
 						</div>
@@ -459,7 +459,7 @@
 								</div>
 							</div>
 							<div class="linefile-bottom"></div>
-						</div>
+						</div> #}
 
 						<div class="report-blog">
 							<div class="report_content">
@@ -554,7 +554,7 @@
 								</div>
 								<div>
 									<p>Đánh dấu tất cả là đã đọc
-																					                      (<span>37</span>)
+																															                      (<span>37</span>)
 									</p>
 								</div>
 							</div>
@@ -568,9 +568,9 @@
 										<div class="content_note">
 											<p>
 												Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id ducimus
-																									                          corrupti assumenda soluta, maxime totam voluptates adipisci
-																									                          similique eum? Reiciendis tempore veritatis deleniti dignissimos possimus
-																									                          necessitatibus enim sapiente aspernatur dicta?
+																																					                          corrupti assumenda soluta, maxime totam voluptates adipisci
+																																					                          similique eum? Reiciendis tempore veritatis deleniti dignissimos possimus
+																																					                          necessitatibus enim sapiente aspernatur dicta?
 											</p>
 										</div>
 									</div>
@@ -585,10 +585,10 @@
 										<div class="content_note">
 											<p>
 												Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id ducimus
-																									                          corrupti assumenda soluta, maxime totam voluptates adipisci
-																									                          similique
-																									                          eum? Reiciendis tempore veritatis deleniti dignissimos possimus
-																									                          necessitatibus enim sapiente aspernatur dicta?
+																																					                          corrupti assumenda soluta, maxime totam voluptates adipisci
+																																					                          similique
+																																					                          eum? Reiciendis tempore veritatis deleniti dignissimos possimus
+																																					                          necessitatibus enim sapiente aspernatur dicta?
 											</p>
 										</div>
 									</div>

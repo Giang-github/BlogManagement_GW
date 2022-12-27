@@ -31,14 +31,14 @@ class Course
     #[ORM\OneToMany(mappedBy: 'course', targetEntity: Blog::class)]
     private Collection $blogs;
 
-    #[ORM\Column]
-    private ?int $price = null;
+    // #[ORM\Column]
+    // private ?int $price = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $stardate = null;
+    // #[ORM\Column(type: Types::DATE_MUTABLE)]
+    // private ?\DateTimeInterface $stardate = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $enddate = null;
+    // #[ORM\Column(type: Types::DATE_MUTABLE)]
+    // private ?\DateTimeInterface $enddate = null;
 
     public function __construct()
     {
@@ -149,39 +149,39 @@ class Course
         return $this;
     }
 
-    public function getPrice(): ?int
-    {
-        return $this->price;
-    }
+    // public function getPrice(): ?int
+    // {
+    //     return $this->price;
+    // }
 
-    public function setPrice(int $price): self
-    {
-        $this->price = $price;
+    // public function setPrice(int $price): self
+    // {
+    //     $this->price = $price;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getStardate(): ?\DateTimeInterface
-    {
-        return $this->stardate;
-    }
+    // public function getStardate(): ?\DateTimeInterface
+    // {
+    //     return $this->stardate;
+    // }
 
-    public function setStardate(\DateTimeInterface $stardate): self
-    {
-        $this->stardate = $stardate;
+    // public function setStardate(\DateTimeInterface $stardate): self
+    // {
+    //     $this->stardate = $stardate;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getEnddate(): ?\DateTimeInterface
-    {
-        return $this->enddate;
-    }
+    // public function getEnddate(): ?\DateTimeInterface
+    // {
+    //     return $this->enddate;
+    // }
 
-    public function setEnddate(\DateTimeInterface $enddate): self
-    {
-        $this->enddate = $enddate;
+    // public function setEnddate(\DateTimeInterface $enddate): self
+    // {
+    //     $this->enddate = $enddate;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

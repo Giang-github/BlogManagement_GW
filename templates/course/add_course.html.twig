@@ -5,10 +5,10 @@
 			<div class="right__title">Dashboard</div>
 			<p class="right__desc">Insert Course</p>
 			<div class="right__formWrapper">
-				<form action="" method="post" enctype="multipart/form-data" >
+				<form action="" method="post" enctype="multipart/form-data">
 					<div class="containdiv">
 						<div class="div">
-                        {{ form_start(courseForm) }}
+							{{ form_start(courseForm) }}
 							<div class="right__inputWrapper">
 								<label for="title">Title</label>
 								{{ form_widget(courseForm.title,{
@@ -30,36 +30,36 @@
 										  }
                                  }) }}
 							</div>
-							
+
 							<button class="btn" onclick="submit_blog()" type="submit">ADD COURSE</button>
-							</div>
-							<div class="div">
-							<div class="right__inputWrapper">
+						</div>
+						<div class="div">
+							{# <div class="right__inputWrapper">
 								<label for="stardate">Start Date</label>
 								{{ form_widget(courseForm.stardate,{
                                         'attr':{
                                         'placeholder': 'Start date'
                                                 }
                                  }) }}
-							</div>
-							{# <div class="right__inputWrapper">
-								<label for="enddate">End Date</label>
-								{{ form_widget(courseForm.enddate,{
-                                 }) }}
 							</div> #}
-							<div class="right__inputWrapper">
+							{# <div class="right__inputWrapper">
+															<label for="enddate">End Date</label>
+															{{ form_widget(courseForm.enddate,{
+							                                 }) }}
+														</div> #}
+							{# <div class="right__inputWrapper">
 								<label for="price">Price</label>
 								{{ form_widget(courseForm.price,{
                                         'attr':{
                                         'placeholder': 'Enter price !!!.'
 										  }
                                  }) }}
-							</div>
+							</div> #}
 						</div>
 						{{ form_end(courseForm) }}
 					</div>
 				</form>
 			</div>
 		</div>
-	</div> 
+	</div>
 {% endblock %}

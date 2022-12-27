@@ -112,7 +112,7 @@ class WebController extends AbstractController
     public function podcast( PodcastRepository $podcastRepository,  CategoryRepository $categoryRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
-        $podcast = $podcastRepository->findAll();
+        $podcast = $podcastRepository->sortPodcastByIdAsc();
         $category = $categoryRepository->findAll();
 
         return $this->render('WebUser/podcast.html.twig', [
